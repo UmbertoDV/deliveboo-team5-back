@@ -16,8 +16,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::paginate(4);
-        return view('restaurants.index', compact('restaurants'));
+        $restaurants = Restaurant::paginate(8);
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
@@ -49,7 +49,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
@@ -60,7 +60,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -83,6 +83,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->route('admin.restaurants.index');
     }
 }
