@@ -13,9 +13,14 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $is_visible = $request->visibility;
+
+        $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : 'updated_at';
+        $order = (!empty($order_request = $request->get('order'))) ? $order_request : 'ASC';
+
+        $dishes = Dish::where('id', '>', 0);
     }
 
     /**
