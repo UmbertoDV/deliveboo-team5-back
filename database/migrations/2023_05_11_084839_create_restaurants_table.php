@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email', 80)->unique();
             $table->string('telephone', 15)->unique();
             $table->text('description')->nullable();
-            $table->integer('p_iva')->unique();
+            $table->string('p_iva')->unique();
             $table->text('image')->nullable();
             $table->timestamps();
         });
