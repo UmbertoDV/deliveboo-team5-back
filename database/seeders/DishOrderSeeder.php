@@ -17,6 +17,8 @@ class DishOrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $user = Dish::find(1);
+        $user->orders()->attach($user, ['quantity' => 2]);
         // $orders = Order::all()->pluck('id');
         // $dishes = Dish::all()->pluck('id');
 
