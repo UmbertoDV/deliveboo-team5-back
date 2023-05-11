@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\DishController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +27,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')
+    ->prefix('/admin')
+    ->group(function () {
+        Route::resource('restaurants', RestaurantController::class);
+        Route::resource('dishes', DishController::class);
+        Route::resource('types', TypeController::class);
+        Route::resource('orders', OrderController::class);
+    });
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
