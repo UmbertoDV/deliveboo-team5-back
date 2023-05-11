@@ -13,9 +13,14 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.types.index');
+        $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : "updated_at";
+        $order = (!empty($order_request = $request->get('order'))) ? $order_request : "DESC";
+        
+        $types = Type::orderBy($sort, $order)->paginate(10)->withQueryString();
+
+        return view('admin.types.index', compact('types', 'sort', 'order'));
     }
 
     /**
@@ -81,6 +86,22 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $id_type = $type->id;
+        // if($type->image) Storage::delete($type->image);
+
+        $type->delete();
+
+        return to_route('admin.types.index')
+            ->with('message_type', "danger")
+            ->with('message_content', "Type $id_type spostata nel cestino");
+    }
+
+    public function trash(Request $request){
+
+        $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : "updated_at";
+        $order = (!empty($order_request = $request->get('order'))) ? $order_request : "DESC";
+        $types = Type::onlyTrashed()->orderBy($sort, $order)->paginate(10)->withQueryString();
+
+        return view('admin.types.trash', compact('types', 'sort', 'order'));
     }
 }
