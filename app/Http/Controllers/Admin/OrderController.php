@@ -15,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     { {
-            $order = Order::paginate(8);
-            return view('admin.orders.index', compact('order'));
+            $orders = Order::paginate(8);
+            return view('admin.orders.index', compact('orders'));
         }
     }
 
@@ -49,7 +49,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
@@ -83,6 +83,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('admin.order.index');
     }
 }

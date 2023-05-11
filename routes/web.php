@@ -29,6 +29,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')
     ->prefix('/admin')
+    ->name("admin.")
     ->group(function () {
         Route::resource('restaurants', RestaurantController::class);
         Route::resource('dishes', DishController::class);
