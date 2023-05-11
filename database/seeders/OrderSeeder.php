@@ -25,5 +25,16 @@ class OrderSeeder extends Seeder
         $order->status = 'In arrivo';
         $order->total = '200';
         $order->save();
+
+        $order = new Order;
+        $order->name = "Umberto";
+        $order->surname = "Di Vicino";
+        $order->address = "Via del Casale di San Marzio 3";
+        $order->email = "Umberto@gmail.com";
+        $order->telephone = "+39 34056733367";
+        $order->note = "Doppio Bacon perfavore.";
+        $order->status = 'In arrivo';
+        $order->total = '200';
+        $order->save();
     }
 }
