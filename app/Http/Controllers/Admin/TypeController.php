@@ -15,7 +15,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.types.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.form');
     }
 
     /**
@@ -58,7 +58,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        
     }
 
     /**
