@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('price')->unsigned();
             $table->text('image')->nullable();
             $table->boolean('visibility');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

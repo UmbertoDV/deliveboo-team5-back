@@ -29,9 +29,16 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')
     ->prefix('/admin')
+    ->name('admin.')
     ->group(function () {
         Route::resource('restaurants', RestaurantController::class);
+
+        // soft delete
+        Route::get('dishes/trash', [DishController::class, 'trash'])->name('dishes.trash');
+        Route::put('dishes/{dish}/restore', [DishController::class, 'restore'])->name('dishes.restore');
+        Route::delete('dishes/{dish}/force-delete', [DishController::class, 'forceDelete'])->name('dishes.force-delete');
         Route::resource('dishes', DishController::class);
+
         Route::resource('types', TypeController::class);
         Route::resource('orders', OrderController::class);
     });
