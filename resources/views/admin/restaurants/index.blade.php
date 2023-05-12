@@ -9,10 +9,10 @@
   </div>
 
 
-<div class="container py-5">
+<div class="container my-5">
    
 
-    <table class="table">
+    <table class="table ">
         <thead class="table-light">
             <tr>
                 <th scope="col">Nome</th>
@@ -27,6 +27,8 @@
                 
             </tr>
         </thead>
+
+
         <tbody>
 
             @foreach ($restaurants as $restaurant)
@@ -38,10 +40,10 @@
                 <td>{{ $restaurant->getAbstract() }}</td>
                 <td>{{ $restaurant->p_iva }}</td>
                 <td><div class="image-prev-index border p-2 d-flex align-items-center">
-                    <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image-prev-i">
+                    <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image-prev-i" class="img">
                 </div></td>
                 
-                <td class="d-flex">
+                <td class="d-flex border border-0">
                  <a href="{{ route('admin.restaurants.show', $restaurant)}}">
                     <i class="bi bi-eye mx-2"> <button class="btn btn-primary">Dettaglio</button> </i>
                 </a>
@@ -59,7 +61,21 @@
                             <i class="fa-solid fa-trash">Elimina</i>
                         </button>
 
-            @foreach ($restaurants as $restaurant)
+        
+
+               </td>
+             </tr>
+            @endforeach
+        </tbody>
+        
+     </table>
+
+        <div class="mt-3">
+            {{ $restaurants->links() }}
+        </div>
+
+
+        @foreach ($restaurants as $restaurant)
 
             <div class="modal fade" id="delete-modal-{{ $restaurant->id }}" tabindex="-1"
                 aria-labelledby="delete-modal-{{ $restaurant->id }}-label" aria-hidden="true">
@@ -88,21 +104,11 @@
                                 </form>
                         </div>
                      </div>
-                 </div>
                 </div>
+            </div>
             @endforeach
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-       
 
-        <div class="mt-3">
-
-            {{ $restaurants->links() }}
-        </div>
-
+    </div>   
 @endsection
 
 
