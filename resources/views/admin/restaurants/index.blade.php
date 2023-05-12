@@ -96,8 +96,13 @@
             @endforeach
         </tbody>
     </table>
-</div>
-</section>
+        </div>
+    </section>
+
+        <div class="mt-3">
+
+            {{ $restaurants->links() }}
+        </div>
 
 @endsection
 

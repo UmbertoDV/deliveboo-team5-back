@@ -87,11 +87,6 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        @error('telephone')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
                     </div>
                 </div>
 
@@ -117,11 +112,7 @@
                         <input type="number" name="p_iva" id="p_iva"
                             class="@error('p_iva') is-invalid @enderror form-control"
                             value="{{ old('p_iva', $restaurant->p_iva) }}">
-                        @error('p_iva')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+
                         @error('p_iva')
                             <div class="invalid-feedback">
                                 {{ $message }}

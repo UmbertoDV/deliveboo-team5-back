@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RestaurantController extends Controller
 {
@@ -17,7 +18,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::paginate(8);
+        $restaurants = Restaurant::paginate(2);
         return view('admin.restaurants.index', compact('restaurants'));
     }
 
@@ -40,7 +41,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
         $restaurant = new Restaurant;
         $restaurant->fill($data);
         $restaurant->save();
@@ -78,7 +79,7 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
         $restaurant->update($data);
         return redirect()->route('admin.restaurants.show', $restaurant);
     }
@@ -93,5 +94,51 @@ class RestaurantController extends Controller
     {
         $restaurant->delete();
         return redirect()->route('admin.restaurants.index');
+    }
+
+
+    //VALIDATION
+    private function validation($data)
+    {
+        $validator = Validator::make(
+            $data,
+            [
+                'name' => 'required|string|max:80',
+                'address' => 'required|string|max:100',
+                'email' => 'string|max:80',
+                'telephone' => 'required|string|max:15',
+                'description' => 'string',
+                'p_iva' => 'required|string',
+                'image' => 'nullable|image|mimes:jpg,png,jpeg'
+
+            ],
+            [
+                'name.required' => 'Il nome del ristorante è obbligatorio',
+                'name.string' => 'Il nome del ristorante deve essere una stringa',
+                'name.max' => 'Il nome del ristorante deve avere massimo 80 caratteri',
+
+                'address.required' => "L'indirizzo del ristorante è obbligatorio",
+                'address.string' => "L'indirizzo del ristorante deve essere una stringa",
+                'address.max' => "L'indirizzo del ristorante deve avere massimo 100 caratteri",
+
+                'email.string' => "La mail deve essere una stringa",
+                'email.max' => "La mail può contenere massimo 80 caratteri",
+
+                'telephone.required' => 'Il numero del ristorante è obbligatorio',
+                'telephone.string' => 'Il numero del ristorante deve essere una stringa',
+                'telephone.max' => 'Il numero del ristorante deve avere massimo 15 caratteri',
+
+                'description.string' => 'La descrizone del ristorante deve essere una stringa',
+
+                'p_iva.required' => "La partita iva è obbligatoria",
+                'p_iva.string' => "La partita iva deve essere una stringa",
+
+                'image.image' => "Inserisci un file, per favore",
+                'image.mimes' => "I formati consentiti sono: jpg, png o jpeg",
+                
+                
+            ]
+        )->validate();
+        return $validator;
     }
 }
