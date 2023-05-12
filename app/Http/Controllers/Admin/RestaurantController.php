@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Restaurant;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -25,9 +26,10 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Restaurant $restaurant)
     {
-        //
+        $types = Type::orderBy('name')->get();
+        return view('admin.restaurants.form', compact('restaurant', 'types'));
     }
 
     /**
@@ -60,7 +62,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('restaurants.edit', compact('restaurant'));
+        return view('admin.restaurants.form', compact('restaurant'));
     }
 
     /**

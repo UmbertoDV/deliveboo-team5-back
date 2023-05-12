@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <div class="container pt-5 d-flex justify-content-end">
+    <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
+      Aggiungi nuovo ristorante
+    </a>
+  </div>
+
+
 <div class="container py-5">
     <section class="card">
         <div class="card-body">
@@ -33,10 +41,15 @@
                 <td><div class="image-prev-index border p-2 d-flex align-items-center">
                     <img src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}" id="image-prev-i">
                 </div></td>
-                <td>
+                <td class="d-flex">
                  <a href="{{ route('admin.restaurants.show', $restaurant)}}">
                     <i class="bi bi-eye mx-2"> <button class="btn btn-primary">Dettaglio</button> </i>
                 </a>
+
+                <a href="{{ route('admin.restaurants.edit', $restaurant)}}">
+                    <i class="bi bi-eye mx-2"> <button class="btn btn-primary">Modifica</button> </i>
+                </a>
+
 
                 <a href="{{ route('admin.restaurants.edit', $restaurant)}}" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $restaurant->id}}">
                     <i class="bi bi-trash mx-2"> </i>
@@ -76,7 +89,7 @@
                         </div>
                      </div>
                  </div>
-            </div>
+                </div>
             @endforeach
                 </td>
             </tr>
