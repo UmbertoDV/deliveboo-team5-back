@@ -22,7 +22,6 @@ class RestaurantSeeder extends Seeder
         $restaurant->telephone = "+39 3405679848";
         $restaurant->description = 'La cosa più importante per noi è la qualità dei nostri ingredienti. È per questo che ogni giorno nei 640 McDonald’s di tutta Italia trovi prodotti buoni, sicuri e controllati.';
         $restaurant->p_iva = '33006340328';
-        $restaurant->image = 'https://picsum.photos/200';
         $restaurant->save();
 
         $restaurant = new Restaurant;
@@ -32,7 +31,6 @@ class RestaurantSeeder extends Seeder
         $restaurant->telephone = "+39 34056743567";
         $restaurant->description = "Ristorante Cinese tipico aperto da più di 40 anni, direttamente al centro di Roma. Cucina classica tradizionale Cinese con piatti tipici di Hong Kong e Canton. Tavoli all'aperto e sala in puro stile orientale.";
         $restaurant->p_iva = '31026242328';
-        $restaurant->image = 'https://picsum.photos/200';
         $restaurant->save();
     }
 }

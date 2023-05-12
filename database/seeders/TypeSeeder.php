@@ -21,6 +21,7 @@ class TypeSeeder extends Seeder
         foreach ($labels as $label) {
             $type = new Type;
             $type->name = $label;
+            $type->image = '';
             $type->color = $faker->hexColor();;
             $type->save();
         }
