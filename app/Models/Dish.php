@@ -27,18 +27,19 @@ class Dish extends Model
         return substr($this->description, 0, $max) . "...";
     }
 
-    protected function getCreatedAttribute($value)
+    protected function getCreatedAtAttribute($value)
     {
         return date('d/m/Y H:i', strtotime($value));
     }
     // FUNZIONI PER FORMATTARE DATE- richiamo la funzione
-    public function getUpdatedAttribute()
+    protected function getUpdatedAtAttribute($value)
     {
-        return date('d/m/Y H:i', strtotime($this->updated_at));
+        return date('d/m/Y H:i', strtotime($value));
     }
 
     public function getImageUri()
     {
-        return $this->image ? url('storage/' . $this->image) : 'https://picsum.photos/200';
+        // dd($this->image);
+        return $this->image ? asset('storage/' . $this->image) : 'https://picsum.photos/200';
     }
 }
