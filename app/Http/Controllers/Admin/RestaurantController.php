@@ -40,7 +40,11 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $restaurant = new Restaurant;
+        $restaurant->fill($data);
+        $restaurant->save();
+        return redirect()->route('admin.restaurants.show', $restaurant);
     }
 
     /**
@@ -74,7 +78,9 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->all();
+        $restaurant->update($data);
+        return redirect()->route('admin.restaurants.show', $restaurant);
     }
 
     /**

@@ -28,7 +28,7 @@
             {{-- Left side --}}
             <div class="d-flex flex-column">
 
-                {{-- NAME --}}
+                {{-- NOME ATTIVITA' --}}
                 <div class="title-container">
                     <label for="name" class="form-label">
                         Nome attività
@@ -43,15 +43,15 @@
                     @enderror
                 </div>
 
-                {{-- ADDRESS --}}
+                {{-- INDIRIZZO --}}
                 <div class="title-container">
-                    <label for="name" class="form-label">
+                    <label for="address" class="form-label">
                         Indirizzo
                     </label>
-                    <input type="text" name="name" id="name"
-                        class="@error('name') is-invalid @enderror form-control"
-                        value="{{ old('name', $restaurant->address) }}">
-                    @error('name')
+                    <input type="text" name="address" id="address"
+                        class="@error('address') is-invalid @enderror form-control"
+                        value="{{ old('address', $restaurant->address) }}">
+                    @error('address')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -60,13 +60,13 @@
 
                 {{-- EMAIL --}}
                 <div class="title-container">
-                    <label for="name" class="form-label">
+                    <label for="email" class="form-label">
                         Email
                     </label>
-                    <input type="text" name="name" id="name"
-                        class="@error('name') is-invalid @enderror form-control"
-                        value="{{ old('name', $restaurant->email) }}">
-                    @error('name')
+                    <input type="text" name="email" id="email"
+                        class="@error('email') is-invalid @enderror form-control"
+                        value="{{ old('email', $restaurant->email) }}">
+                    @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -79,15 +79,15 @@
                         <label for="type class=" class="form-label">
                             Telefono
                         </label>
-                        <input type="number" name="price" id="price"
-                            class="@error('price') is-invalid @enderror form-control"
-                            value="{{ old('price', $restaurant->telephone) }}">
-                        @error('price')
+                        <input type="number" name="telephone" id="telephone"
+                            class="@error('telephone') is-invalid @enderror form-control"
+                            value="{{ old('telephone', $restaurant->telephone) }}">
+                        @error('telephone')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                        @error('price')
+                        @error('telephone')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -114,15 +114,15 @@
                         <label for="type class=" class="form-label">
                             P.iva
                         </label>
-                        <input type="number" name="price" id="price"
-                            class="@error('price') is-invalid @enderror form-control"
-                            value="{{ old('price', $restaurant->p_iva) }}">
-                        @error('price')
+                        <input type="number" name="p_iva" id="p_iva"
+                            class="@error('p_iva') is-invalid @enderror form-control"
+                            value="{{ old('p_iva', $restaurant->p_iva) }}">
+                        @error('p_iva')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                        @error('price')
+                        @error('p_iva')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
