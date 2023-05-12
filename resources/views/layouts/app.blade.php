@@ -63,6 +63,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -77,6 +78,15 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
+
+                                    <a class="dropdown-item"
+                                        href="{{ route('admin.dishes.index') }}">{{ __('Menu') }}</a>
+                                    <a
+                                        class="dropdown-item"href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('admin.orders.index') }}">{{ __('Ordini') }}</a>
+                                    <a
+                                        class="dropdown-item"href="{{ route('admin.types.index') }}">{{ __('Tipologie') }}</a>
                                     <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
