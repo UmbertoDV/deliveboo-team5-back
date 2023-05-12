@@ -9,6 +9,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
@@ -50,14 +51,14 @@ class RestaurantController extends Controller
             $path = Storage::put('uploads/restaurants', $data['image']);
             $data['image'] = $path;
         };
-
         $restaurant = new Restaurant;
+        
+        $id = Auth::id();
         $restaurant->fill($data);
+        $restaurant->user_id = $id;
         $restaurant->save();
         return redirect()->route('admin.restaurants.show', $restaurant);
     }
-
-
 
     /**
      * Display the specified resource.
