@@ -91,7 +91,7 @@
                         <th scope="row">{{ $dish->id }}</th>
                         <td>
                             <div class="image-prev-index border p-2 d-flex align-items-center">
-                                <img src="{{ $dish->image }}" alt="{{ $dish->name }}" id="image-prev-i">
+                                <img src="{{ $dish->getImageUri() }}" alt="{{ $dish->name }}" id="image-prev-i">
                             </div>
                         </td>
                         <td>
