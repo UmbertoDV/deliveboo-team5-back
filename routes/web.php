@@ -34,6 +34,9 @@ Route::middleware('auth')
         Route::resource('restaurants', RestaurantController::class);
         Route::resource('dishes', DishController::class);
         Route::resource('types', TypeController::class);
+        Route::get('orders/trash', [OrderController::class, 'trash'])->name('orders.trash');
+        Route::put('orders/{order}/restore', [OrderController::class, 'restore'])->name('orders.restore');
+        Route::delete('orders/{order}/force-delete', [OrderController::class, 'forceDelete'])->name('orders.force-delete');
         Route::resource('orders', OrderController::class);
     });
 

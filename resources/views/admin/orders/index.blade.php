@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <table class="table mt-5">
+    <h1 class="my-4">Lista ordini</h1>
+    <table class="table table-striped mt-5">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -28,13 +29,15 @@
                     <td class="d-flex">
                         <a href={{ route('admin.orders.show', $order) }}>
                             <button type="button" class="btn btn-primary me-2">
-                                <i class="fa-regular fa-eye"></i>
+                                {{-- <i class="fa-regular fa-eye"></i> --}}
+                                Dettagli
                             </button>
                         </a>
 
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                             data-bs-target="#delete-modal-{{ $order->id }}">
-                            <i class="fa-solid fa-trash"></i>
+                            {{-- <i class="fa-solid fa-trash"></i> --}}
+                            Sposta nel cestino
                         </button>
                         @foreach ($orders as $order)
                             <!-- Modal -->
@@ -44,14 +47,13 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="delete-modal-{{ $order->id }}-label">
-                                                Conferma eliminazione</h1>
+                                                Sposta nel cestino</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-start">
-                                            Sei sicuro di voler eliminare l'ordine n° <strong>{{ $order->id }}</strong>
-                                            <br>
-                                            L'operazione non è reversibile
+                                            Sei sicuro di voler spostare nel cestino l'ordine n°
+                                            <strong>{{ $order->id }}</strong>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -61,7 +63,7 @@
                                                 @method('DELETE')
                                                 @csrf
 
-                                                <button type="submit" class="btn btn-danger">Elimina</button>
+                                                <button type="submit" class="btn btn-danger">Sposta</button>
                                             </form>
                                         </div>
                                     </div>
