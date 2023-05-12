@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 80);
             $table->char('color', 7);
             $table->text('image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

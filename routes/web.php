@@ -31,6 +31,10 @@ Route::middleware('auth')
     ->prefix('/admin')
     ->name('admin.')
     ->group(function () {
+        Route::get('/types/trash',[TypeController::class, 'trash'])->name('types.trash');
+        Route::put('/types/{type}/restore',[TypeController::class, 'restore'])->name('types.restore');
+        Route::delete('/types/{type}/force-delete',[TypeController::class, 'forceDelete'])->name('types.force-delete');
+
         Route::resource('restaurants', RestaurantController::class);
 
         // soft delete
