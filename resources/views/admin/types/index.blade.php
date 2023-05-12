@@ -6,6 +6,7 @@
       <h1>Stai vedendo tutti i TYPES</h1>
       <div>
         <a href="{{ route('admin.types.create') }}" class="btn btn-primary">Crea un TYPES</a>
+        <a href="{{ route('admin.types.trash') }}" class="btn btn-primary">Cestino</a>
       </div>
   </div>
   <div class="card mt-4">
@@ -13,11 +14,11 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nome</th>
+            <th scope="col">@sortablelink('id', 'ID')</th>
+            <th scope="col">@sortablelink('name', 'Nome')</th>
             <th scope="col">Colore</th>
-            <th scope="col">Ultima Modifica</th>
-            <th scope="col">Data Creazione</th>
+            <th scope="col">@sortablelink('updated_at', 'Ultima Modifica')</th>
+            <th scope="col">@sortablelink('created_at', 'Data Creazione')</th>
             <th scope="col"></th>
           </tr>
         </thead>

@@ -21,7 +21,7 @@ class TypeController extends Controller
         $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : "updated_at";
         $order = (!empty($order_request = $request->get('order'))) ? $order_request : "DESC";
         
-        $types = Type::orderBy($sort, $order)->paginate(10)->withQueryString();
+        $types = Type::sortable()->paginate(10)->withQueryString();
 
         return view('admin.types.index', compact('types', 'sort', 'order'));
     }
@@ -178,5 +178,19 @@ class TypeController extends Controller
         return to_route('admin.types.index')
             ->with('message_type', "danger")
             ->with('message_content', "Type con ID $id ripristinato");
+    }
+    public function forceDelete(Int $id)
+    {
+        $type = Type::where('id', $id)->onlyTrashed()->first();
+        $id_type = $type->id;
+        if($type->image) Storage::delete($type->image);
+
+        // $type->tags()->detach();
+
+        $type->forceDelete();
+
+        return to_route('admin.types.trash')
+            ->with('message_type', "danger")
+            ->with('message_content', "Type $id_type eliminato definitivamente");
     }
 }
