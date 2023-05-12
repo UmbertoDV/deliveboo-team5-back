@@ -19,7 +19,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Restaurant $restaurant)
     {
         $restaurants = Restaurant::paginate(3);
         return view('admin.restaurants.index', compact('restaurants'));
@@ -52,7 +52,7 @@ class RestaurantController extends Controller
             $data['image'] = $path;
         };
         $restaurant = new Restaurant;
-        
+
         $id = Auth::id();
         $restaurant->fill($data);
         $restaurant->user_id = $id;
@@ -159,8 +159,8 @@ class RestaurantController extends Controller
 
                 'image.image' => "Inserisci un file, per favore",
                 'image.mimes' => "I formati consentiti sono: jpg, png o jpeg",
-                
-                
+
+
             ]
         )->validate();
         return $validator;
