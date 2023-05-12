@@ -54,7 +54,6 @@
                             @enderror
                         </div>
 
-
                         {{-- SELECT TYPE --}}
                         <div>
                             <div class="">
@@ -85,11 +84,6 @@
                                 <input type="number" name="price" id="price"
                                     class="@error('price') is-invalid @enderror form-control"
                                     value="{{ old('price', $dish->price) }}">
-                                @error('price')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
                                 @error('price')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -130,7 +124,6 @@
                                 @enderror
                             </div>
                         </div>
-
 
                         {{-- Button --}}
                         <div class="align-self-end">

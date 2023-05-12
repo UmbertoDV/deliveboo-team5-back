@@ -29,7 +29,7 @@ class DishController extends Controller
         if (isset($request->visibility)) {
             $dishes->where('visibility', '=', $request->visibility);
         }
-        $dishes = $dishes->orderBy($sort, $order)->paginate(8)->withQueryString();
+        $dishes = $dishes->orderBy($sort, $order)->paginate(6)->withQueryString();
 
         return view('admin.dishes.index', compact('dishes', 'sort', 'order', 'visibility'));
     }
@@ -157,7 +157,7 @@ class DishController extends Controller
             $data,
             [
                 'name' => 'required|string|max:80',
-                'description' => 'string|max:100',
+                'description' => 'string',
                 'price' => 'numeric|between:0,99.99',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg',
                 'visibility' => 'boolean'
@@ -168,10 +168,9 @@ class DishController extends Controller
                 'name.max' => 'Il nome deve avere massimo 80 caratteri',
 
                 'description.string' => 'La descrizione deve essere una stringa',
-                'description.max' => 'Il nome deve avere massimo 100 caratteri',
 
                 'price.numeric' => 'Il prezzo deve essere un numero',
-                'price.max' => 'Il numero deve essere compreso tra 0 e 99,99',
+                'price.between' => 'Il numero deve essere compreso tra 0 e 99,99',
 
                 'image.image' => 'Perfavore inserisci un file',
                 'image.mimes' => 'I formati accettati sono: jpg, png o jpeg',
