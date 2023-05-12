@@ -24,4 +24,14 @@ class Restaurant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getAbstract($max = 50)
+    {
+        return substr($this->description, 0, $max) . "...";
+    }
+
+    public function getImageUri()
+    {
+        return $this->image ? asset('storage/' . $this->image) : "https://picsum.photos/200";
+    }
 }

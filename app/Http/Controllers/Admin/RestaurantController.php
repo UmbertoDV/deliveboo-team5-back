@@ -8,6 +8,8 @@ use App\Models\Restaurant;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -40,13 +42,22 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
         $data = $this->validation($request->all());
+
+        if (Arr::exists($data, 'image')) {
+            $path = Storage::put('uploads/restaurants', $data['image']);
+            $data['image'] = $path;
+        };
+
         $restaurant = new Restaurant;
         $restaurant->fill($data);
         $restaurant->save();
         return redirect()->route('admin.restaurants.show', $restaurant);
     }
+
+
 
     /**
      * Display the specified resource.
@@ -80,18 +91,30 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         $data = $this->validation($request->all());
+
+        if (Arr::exists($data, 'image')) {
+            if ($restaurant->image) Storage::delete($restaurant->image);
+
+            $path = Storage::put('uploads/restaurants', $data['image']);
+            $data['image'] = $path;
+        };
+
         $restaurant->update($data);
         return redirect()->route('admin.restaurants.show', $restaurant);
     }
 
-    /**
+    /** 
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
     public function destroy(Restaurant $restaurant)
+
     {
+        if ($restaurant->image) {
+            Storage::delete($restaurant->image);
+        }
         $restaurant->delete();
         return redirect()->route('admin.restaurants.index');
     }

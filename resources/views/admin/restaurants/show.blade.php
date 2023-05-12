@@ -5,7 +5,7 @@
 <div class="container py-5">
 
     <div class="card" style="width: 18rem;">
-        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+        <img src="{{$restaurant->getImageUri()}}" class="card-img-top" alt="...">
         <div class="card-body">
             <strong>Ristorante: </strong> {{ $restaurant->name }} <br />
             <strong>Indirizzo: </strong> {{ $restaurant->address }} <br />

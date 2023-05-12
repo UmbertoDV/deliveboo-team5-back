@@ -10,11 +10,10 @@
 
 
 <div class="container py-5">
-    <section class="card">
-        <div class="card-body">
+   
 
     <table class="table">
-        <thead>
+        <thead class="table-light">
             <tr>
                 <th scope="col">Nome</th>
                 <th scope="col">Indirizzo</th>
@@ -36,11 +35,12 @@
                 <td>{{ $restaurant->address }}</td>
                 <td>{{ $restaurant->email }}</td>
                 <td>{{ $restaurant->telephone }}</td>
-                <td>{{ $restaurant->description }}</td>
+                <td>{{ $restaurant->getAbstract() }}</td>
                 <td>{{ $restaurant->p_iva }}</td>
                 <td><div class="image-prev-index border p-2 d-flex align-items-center">
-                    <img src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}" id="image-prev-i">
+                    <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image-prev-i">
                 </div></td>
+                
                 <td class="d-flex">
                  <a href="{{ route('admin.restaurants.show', $restaurant)}}">
                     <i class="bi bi-eye mx-2"> <button class="btn btn-primary">Dettaglio</button> </i>
@@ -96,8 +96,7 @@
             @endforeach
         </tbody>
     </table>
-        </div>
-    </section>
+       
 
         <div class="mt-3">
 
