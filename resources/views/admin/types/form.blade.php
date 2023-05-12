@@ -3,12 +3,22 @@
 @section('content')
   <div class="container mt-4">
     <div class="row">
-      <h1>Stai creando un TYPES</h1>
+      @if ($type->id)
+        <h1>Stai modificando un TYPES</h1>
+      @else
+        <h1>Stai creando un TYPES</h1>
+      @endif
       <span>Compila tutti campi qua sotto</span>
     </div>
     <div class="card mt-4">
       <div class="card-body">
-        <form method="POST" action="{{ route('admin.types.store') }}" class="row" enctype="multipart/form-data">
+        @if ($type->id)
+          <form method="POST" action="{{ route('admin.types.update') }}" class="row" enctype="multipart/form-data">
+            @method('PUT')
+        @else
+          <form method="POST" action="{{ route('admin.types.store') }}" class="row" enctype="multipart/form-data">
+        @endif
+        @csrf
           <div class="row">
             <div class="col-6">
               <label for="name" class="form-label">Nome</label>

@@ -30,7 +30,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.types.form');
+        $type = new Type;
+        return view('admin.types.form', compact('type'));
     }
 
     /**
@@ -100,8 +101,19 @@ class TypeController extends Controller
 
         $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : "updated_at";
         $order = (!empty($order_request = $request->get('order'))) ? $order_request : "DESC";
-        $types = Type::onlyTrashed()->orderBy($sort, $order)->paginate(10)->withQueryString();
+        $types = Type::onlyTrashed()->orderBy($sort, $order)->paginate(10);
+        $types->appends($_GET);
 
         return view('admin.types.trash', compact('types', 'sort', 'order'));
+    }
+
+    public function restore(Int $id)
+    {
+        $type = Type::where('id', $id)->onlyTrashed()->first();
+        $type->restore();
+
+        return to_route('admin.types.index')
+            ->with('message_type', "danger")
+            ->with('message_content', "Type con ID $id ripristinato");
     }
 }
