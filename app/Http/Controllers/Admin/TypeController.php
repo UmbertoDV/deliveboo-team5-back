@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class TypeController extends Controller
 {
@@ -42,7 +45,34 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:80',
+            'color' => 'required|string|max:7|min:7',
+        ],
+        [
+            'name.required' => 'Il nome è obbligatorio',
+            'name.string' => 'Il nome deve essere un testo',
+            'name.max' => 'Il nome non deve superare gli 80 caratteri',
+            'color.required' => 'Il colore è obbligatorio',
+            'color.string' => 'Seleziona il colore dal color picker',
+            'color.max' => 'Seleziona il colore dal color picker',
+            'color.min' => 'Seleziona il colore dal color picker',
+        ]
+    );
+
+    $data = ($request->all());
+    if(Arr::exists($data, 'image')){
+        $path_image = Storage::put('uploads/types', $data['image']);
+        $data['image'] = $path_image;
+    };
+    
+    $type = new Type();
+    $type->fill($data);
+    $type->save();
+    
+    return to_route('admin.types.index')
+        ->with('message_content', "Type $type->id creata con successo");
+
     }
 
     /**
@@ -53,7 +83,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -64,7 +94,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        
+        return view('admin.types.form', compact('type'));
     }
 
     /**
@@ -76,7 +106,40 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:80',
+            'color' => 'required|string|max:7|min:7',
+        ],
+        [
+            'name.required' => 'Il nome è obbligatorio',
+            'name.string' => 'Il nome deve essere un testo',
+            'name.max' => 'Il nome non deve superare gli 80 caratteri',
+            'color.required' => 'Il colore è obbligatorio',
+            'color.string' => 'Seleziona il colore dal color picker',
+            'color.max' => 'Seleziona il colore dal color picker',
+            'color.min' => 'Seleziona il colore dal color picker',
+        ]
+    );
+    // if(Arr::exists($data, 'image')){
+    //     if($type->image) Storage::delete($type->image);
+    //     $path_image = Storage::put('uploads/types', $data['image']);
+    //     $data['image'] = $path_image;
+    // };
+
+    $data = ($request->all());
+    if(Arr::exists($data, 'image')){
+        if($type->image) Storage::delete($type->image);
+        $path_image = Storage::put('uploads/types', $data['image']);
+        $data['image'] = $path_image;
+    };
+
+    $type->fill($data);
+    $type->save();
+
+    
+    return to_route('admin.types.index')
+        ->with('message_content', "Type $type->id modificata con successo");
+
     }
 
     /**
@@ -88,7 +151,7 @@ class TypeController extends Controller
     public function destroy(Type $type)
     {
         $id_type = $type->id;
-        // if($type->image) Storage::delete($type->image);
+        if($type->image) Storage::delete($type->image);
 
         $type->delete();
 

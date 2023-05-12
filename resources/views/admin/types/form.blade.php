@@ -13,28 +13,31 @@
     <div class="card mt-4">
       <div class="card-body">
         @if ($type->id)
-          <form method="POST" action="{{ route('admin.types.update') }}" class="row" enctype="multipart/form-data">
-            @method('PUT')
+          <form method="POST" action="{{ route('admin.types.update', $type) }}" class="row" enctype="multipart/form-data">
+            @method('put')
         @else
           <form method="POST" action="{{ route('admin.types.store') }}" class="row" enctype="multipart/form-data">
         @endif
         @csrf
           <div class="row">
             <div class="col-6">
+              {{-- NOME --}}
               <label for="name" class="form-label">Nome</label>
               <div class="input-group input-group-sm mb-3">
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $type->name) }}">
               </div>
+              {{-- IMMAGINE --}}
               <label for="image" class="form-label">Immagine</label>
               <div class="input-group input-group-sm mb-3">
                 <input type="file" id="image" name="image" class="form-control">
               </div>
+              {{-- COLORE --}}
                 <label for="color" class="form-label">Colore</label>
               <div class="input-group-sm mb-3">
-                <input type="color" class="form-control form-control-color force-width" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                <input type="color" name="color" class="form-control form-control-color force-width" id="exampleColorInput" value="{{ old('color', $type->color) }}" title="Choose your color">
               </div>
               <div class="col-auto text-center">
-                <button type="submit" class="btn btn-primary mt-3 w-25">Salva</button>
+                <input type="submit" class="btn btn-primary mt-3 w-25" value="Salva">
               </div>
             </div>
             <div class="col-6">

@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="container mt-4">
-  <div class="row">
-    <h1>Stai vedendo tutti i TYPES</h1>
+  <div class="d-flex align-items-center justify-content-between">
+      <h1>Stai vedendo tutti i TYPES</h1>
+      <div>
+        <a href="{{ route('admin.types.create') }}" class="btn btn-primary">Crea un TYPES</a>
+      </div>
   </div>
   <div class="card mt-4">
     <div class="card-body">
