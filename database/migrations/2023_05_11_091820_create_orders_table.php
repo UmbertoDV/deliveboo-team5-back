@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->enum('status', ['Consegnato', 'In arrivo', 'In ritardo', 'Annullato']);
             $table->float('total')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

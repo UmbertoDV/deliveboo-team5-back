@@ -15,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     { {
-            $order = Order::paginate(8);
-            return view('admin.orders.index', compact('order'));
+            $orders = Order::paginate(8);
+            return view('admin.orders.index', compact('orders'));
         }
     }
 
@@ -49,7 +49,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
@@ -81,8 +81,31 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
+    public function trash(Request $request)
+    {
+        $orders = Order::onlyTrashed()->paginate(8)->withQueryString();
+        return view('admin.orders.trash', compact('orders'));
+    }
+
+    public function forceDelete(Int $id)
+    {
+        $id_order = Order::where('id', $id)->onlyTrashed($id)->first();
+        $id_order->forceDelete();
+
+        return to_route('admin.orders.index');
+    }
+
+    public function restore(Int $id)
+    {
+        $id_order = Order::where('id', $id)->onlyTrashed($id)->first();
+        $id_order->restore();
+
+        return to_route('admin.orders.index');
+    }
+
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('admin.orders.index');
     }
 }
