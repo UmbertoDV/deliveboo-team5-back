@@ -6,6 +6,7 @@ use App\Models\Dish;
 use App\Models\Type;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Models\User;
 // 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,12 @@ class DishController extends Controller
         if (isset($request->visibility)) {
             $dishes->where('visibility', '=', $request->visibility);
         }
-        $dishes = $dishes->orderBy($sort, $order)->paginate(6)->withQueryString();
+
+        $user_id = $request->user()->id;
+        $restaurant = User::find($user_id)->restaurant;
+        $dishes = $restaurant->dishes;
+
+        // $dishes = $dishes->sortByDesc($sort)->paginate(6)->withQueryString();
 
         return view('admin.dishes.index', compact('dishes', 'sort', 'order', 'visibility'));
     }
@@ -56,6 +62,8 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id = $request->user()->id;
+        $dish = Dish::all();
 
         $data = $this->validation($request->all());
         if (Arr::exists($data, 'image')) {
@@ -67,6 +75,12 @@ class DishController extends Controller
         $dish->fill($data);
 
         $data['visibility'] = $request->has('visibility') ? 1 : 0;
+
+        // Collegamento con id_restaurant
+        $user_id = $request->user()->id;
+        $restaurant = User::find($user_id)->restaurant;
+        $dish->restaurant_id = $restaurant->id;
+
         $dish->save();
 
         if (Arr::exists($data, 'types')) $dish->types()->attach($data['types']);

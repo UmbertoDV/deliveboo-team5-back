@@ -122,7 +122,7 @@
             </tbody>
         </table>
         {{-- PAGINATION --}}
-        {{ $dishes->links() }}
+        {{-- {{ $dishes->links() }} --}}
     </div>
 
     {{-- MODALE --}}
