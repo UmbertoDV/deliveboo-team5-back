@@ -45,6 +45,7 @@ td {
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
     text-decoration: none;
+    border: none;
 
     &:hover {
         color: white;
@@ -84,5 +85,59 @@ svg {
 
     100% {
         translate: (0px);
+    }
+}
+
+// 
+.right-side-dish,
+.show-right-dish {
+    width: 40%;
+
+    img {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+.left-side-dish,
+.show-left-dish {
+    width: 60%;
+}
+
+.form-dishes {
+    gap: 1rem;
+}
+
+.icon-show-dish {
+    text-align: right;
+
+    a {
+        margin-right: 1px;
+    }
+}
+
+.show-dishes>div>a,
+.btn-form-dish {
+    background-color: #E9511D;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    margin-top: 3rem;
+    border: none;
+
+    &:hover {
+        color: white;
+        background-color: #BF3100;
+    }
+}
+
+.btn-form-dish {
+    background-color: #5d4df5;
+    padding: 0.5rem 0.9rem;
+
+    &:hover {
+        color: white;
+        background-color: #2f1be3;
     }
 }

@@ -4,10 +4,10 @@
     <section class="container form-contain">
 
         <div class="">
-            <h2 class="my-4">{{ $dish->id ? 'Modifica- ' . $dish->title : 'Aggiungi un nuovo piatto' }}
+            <h2 class="my-4">{{ $dish->id ? 'Modifica ' . $dish->title : 'Aggiungi un nuovo piatto' }}
             </h2>
 
-            <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+            <a href="{{ route('admin.dishes.index') }}" class="btn-violet">
                 Vai al Menu
             </a>
         </div>
@@ -22,9 +22,9 @@
                         <form method="POST" action="{{ route('admin.dishes.store') }}" enctype="multipart/form-data">
                 @endif
                 @csrf
-                <div class="input-container d-flex">
+                <div class="input-container d-flex form-dishes">
                     {{-- Left side --}}
-                    <div class="d-flex flex-column">
+                    <div class="left-side-dish d-flex flex-column">
 
                         {{-- NAME --}}
                         <div class="title-container">
@@ -127,15 +127,15 @@
 
                         {{-- Button --}}
                         <div class="align-self-end">
-                            <button type="submit" class="btn btn-primary mt-4">
+                            <button type="submit" class="btn-form-dish mt-4">
                                 Salva
                             </button>
                         </div>
                     </div>
                     {{-- Right Side Image Preview --}}
-                    <div class="d-flex flex-column">
-                        <div class="image-upload border p-2">
-                            <img src="{{ $dish->image }}" alt="{{ $dish->title }}" id="image_preview">
+                    <div class="right-side-dish d-flex flex-column">
+                        <div class="image image-upload border p-2">
+                            <img src="{{ $dish->getImageUri() }}" alt="{{ $dish->title }}" id="image_preview">
                         </div>
                     </div>
                 </div>
@@ -144,5 +144,21 @@
             </div>
         </div>
     </section>
-    <script></script>
+    <script>
+        const imageEl = document.getElementById('image');
+        const imagePreviewEl = document.getElementById('image_preview');
+        const imagePlaceholder = imagePreviewEl.src;
+        imageEl.addEventListener(
+            'change', () => {
+                if (imageEl.files && imageEl.files[0]) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(imageEl.files[0]);
+                    reader.onload = e => {
+                        imagePreviewEl.src = e.target.result;
+                    }
+                } else {
+                    imagePreviewEl.src = imagePlaceholder;
+                }
+            });
+    </script>
 @endsection

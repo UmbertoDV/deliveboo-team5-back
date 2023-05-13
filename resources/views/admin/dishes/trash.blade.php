@@ -95,15 +95,16 @@
                         </td>
                         <td class="col">{{ $dish->description }}</td>
                         <td>{{ $dish->created_at }}</td>
+                        <td>{{ $dish->updated_at }}</td>
                         <td class="text-center">
-                            <button class="ms-3 text-danger" data-bs-toggle="modal"
+                            <a class="ms-3 text-danger" data-bs-toggle="modal"
                                 data-bs-target="#delete-modal-{{ $dish->id }}" title="Elimina il prodotto"><i
                                     class="fa-solid fa-trash"></i>
-                            </button>
-                            <button class="ms-3 text-success" data-bs-toggle="modal"
+                            </a>
+                            <a class="ms-3 text-success" data-bs-toggle="modal"
                                 data-bs-target="#restore-modal-{{ $dish->id }}" title="Ripristina il prodotto"> <i
                                     class="fa-solid fa-arrow-up-from-bracket"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
 
