@@ -1,27 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container py-5">
 
-<div class="container py-5">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ $restaurant->getImageUri() }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <strong>Ristorante: </strong> {{ $restaurant->name }} <br />
+                <strong>Indirizzo: </strong> {{ $restaurant->address }} <br />
+                <strong>Email: </strong> {{ $restaurant->email }} <br />
+                <strong>Telefono: </strong> {{ $restaurant->telephone }} <br />
+                <strong>Descrizione: </strong> {{ $restaurant->description }} <br />
+                <strong>P.IVA:</strong> {{ $restaurant->p_iva }} <br />
 
-    <div class="card" style="width: 18rem;">
-        <img src="{{$restaurant->getImageUri()}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <strong>Ristorante: </strong> {{ $restaurant->name }} <br />
-            <strong>Indirizzo: </strong> {{ $restaurant->address }} <br />
-            <strong>Email: </strong> {{ $restaurant->email }} <br />
-            <strong>Telefono: </strong> {{ $restaurant->telephone }} <br />
-            <strong>Descrizione: </strong> {{ $restaurant->description }} <br />
-            <strong>P.IVA:</strong> {{ $restaurant->p_iva }} <br />
-            
+            </div>
         </div>
-      </div>
-      <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary my-5"> Torna indietro</a>
-</div>
-
-
-
-
-
-
+        <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary my-5"> Torna indietro</a>
+        <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-primary my-5"> Modifica</a>
+    </div>
 @endsection

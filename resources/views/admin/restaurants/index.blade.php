@@ -3,9 +3,11 @@
 @section('content')
     <div class="container pt-5 d-flex justify-content-end">
 
-        <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
-            Aggiungi nuovo ristorante
-        </a>
+        @if (!$restaurant)
+            <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
+                Aggiungi il tuo ristorante
+            </a>
+        @endif
 
     </div>
 
@@ -22,8 +24,8 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">P.IVA</th>
-                    <th scope="col">Immagine</th>
-                    <th scope="col"></th>
+                    {{-- <th scope="col">Immagine</th> --}}
+                    <th scope="col">Azioni</th>
                     <th scope="col"></th>
 
                 </tr>
@@ -40,14 +42,13 @@
                         <td>{{ $restaurant->telephone }}</td>
                         <td>{{ $restaurant->getAbstract() }}</td>
                         <td>{{ $restaurant->p_iva }}</td>
-                        <td>
-                            <div class="image-prev-index border p-2 d-flex align-items-center">
+                        {{-- <td> --}}
+                        {{-- <div class="p-2 d-flex align-items-center">
                                 <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image-prev-i"
                                     class="img">
-                            </div>
-                        </td>
-
-                        <td class="d-flex border border-0">
+                            </div> --}}
+                        {{-- </td> --}}
+                        <td class="d-flex">
                             <a href="{{ route('admin.restaurants.show', $restaurant) }}">
                                 <i class="bi bi-eye mx-2"> </i>
                             </a>
@@ -63,9 +64,6 @@
 
         </table>
 
-        <div class="mt-3">
-            {{ $restaurants->links() }}
-        </div>
 
 
         @foreach ($restaurants as $restaurant)

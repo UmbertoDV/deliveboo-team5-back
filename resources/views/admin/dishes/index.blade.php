@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4 mb-3">
-        <a class="btn btn-primary" href="{{ route('admin.dishes.create') }}"><i
+    <div class="container mt-5 mb-4">
+        <a class="btn-violet" href="{{ route('admin.dishes.create') }}"><i
                 class="fa-solid fa-circle-plus  text-white me-2"></i>Aggiungi un nuovo piatto</a>
-        <a class="btn btn-primary" href="{{ route('admin.types.index') }}"><i
+        <a class="btn-violet" href="{{ route('admin.types.index') }}"><i
                 class="fa-solid fa-diamond text-white me-2"></i>Aggiungi una tipologia</a>
 
-        <a class="btn btn-primary" href="{{ route('admin.dishes.trash') }}"><i
+        <a class="btn-violet" href="{{ route('admin.dishes.trash') }}"><i
                 class="fa-solid fa-trash-can  text-white me-2"></i>Trashcan</a>
 
     </div>
@@ -90,17 +90,17 @@
                     <tr>
                         <th scope="row">{{ $dish->id }}</th>
                         <td>
-                            <div class="image-prev-index border p-2 d-flex align-items-center">
+                            <div class="image-prev-index">
                                 <img src="{{ $dish->getImageUri() }}" alt="{{ $dish->name }}" id="image-prev-i">
                             </div>
                         </td>
                         <td>
                             <div>{{ $dish->name }}</div>
                         </td>
-                        <td class="col">{{ $dish->getAbstract() }}</td>
+                        <td class="abstract">{{ $dish->getAbstract() }}</td>
                         <td>{{ $dish->created_at }}</td>
                         <td>{{ $dish->updated_at }}</td>
-                        <td class="text-center">
+                        <td class="dishes-icons text-center">
                             <div>
                                 <a href="{{ route('admin.dishes.show', $dish) }}"><i class="fa-solid fa-eye mt-2"></i></a>
                             </div>
@@ -110,7 +110,7 @@
                             <div>
                                 <a type="button" data-bs-toggle="modal"
                                     data-bs-target="#delete-modal-{{ $dish->id }}">
-                                    <i class="fa-solid fa-trash-can text-primary mt-2"></i>
+                                    <i class="fa-solid fa-trash-can mt-2"></i>
                                 </a>
                             </div>
                         </td>

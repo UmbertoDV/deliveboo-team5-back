@@ -5,93 +5,63 @@
     height: 150px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .image-prev-index {
     img {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         object-fit: contain;
+        outline-offset: 4px;
+        outline: 1px solid #5d4df5;
+        border-radius: 20px;
     }
+
+    padding:0.5rem 0rem 0.5rem 0rem;
+
 }
 
+td {
+    padding-top: 0.5rem;
+}
 
+.navbar {
 
+    background-color: #5d4df5;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .navbar {
-//     background-color: #E9511D;
-// }
+    .nav-item>a {
+        color: white;
+    }
+}
 
 #Deliveboo {
     width: 80px;
 
+}
+
+// DISHES
+.btn-violet {
+
+    background-color: #E9511D;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
+
+.dishes-icons {
+    a {
+
+        i {
+
+            color: #5d4df5;
+        }
+
+    }
+}
+
+.abstract {
+    width: 30%;
+}
+
+.table-primary a {
+    text-decoration: none;
 }

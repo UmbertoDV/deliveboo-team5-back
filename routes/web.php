@@ -37,7 +37,6 @@ Route::middleware('auth')
 
         Route::resource('restaurants', RestaurantController::class);
 
-        // soft delete
         Route::get('dishes/trash', [DishController::class, 'trash'])->name('dishes.trash');
         Route::put('dishes/{dish}/restore', [DishController::class, 'restore'])->name('dishes.restore');
         Route::delete('dishes/{dish}/force-delete', [DishController::class, 'forceDelete'])->name('dishes.force-delete');
@@ -55,5 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__ . '/auth.php';

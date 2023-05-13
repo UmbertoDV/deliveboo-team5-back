@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Restaurant;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Arr;
@@ -21,8 +22,12 @@ class RestaurantController extends Controller
      */
     public function index(Restaurant $restaurant)
     {
-        $restaurants = Restaurant::paginate(3);
-        return view('admin.restaurants.index', compact('restaurants'));
+        $user_id = Auth::id();
+        $restaurants = Restaurant::where('user_id', $user_id)->get();
+        $restaurant = User::find($user_id)->restaurant;
+        // dd($restaurant);
+
+        return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant'));
     }
 
     /**

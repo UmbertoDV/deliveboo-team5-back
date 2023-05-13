@@ -6,7 +6,7 @@
 
         <div class="">
             <h2 class="my-4">
-                {{ $restaurant->id ? 'Modifica informazioni ristorante ' . $restaurant->title : 'Aggiungi un nuovo ristorante' }}
+                {{ $restaurant->user_id ? 'Modifica informazioni ristorante' : '' }}
             </h2>
 
             <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
@@ -18,10 +18,7 @@
             <div class="body-form card p-3">
 
                 @if (!$restaurant->user_id)
-                    {{-- <form method="POST" action="{{ route('admin.restaurants.update', $restaurant) }}"
-                        enctype="multipart/form-data"> --}}
-                    {{-- @method('put') --}}
-                    {{-- @else --}}
+                    <h2>Aggiungi il tuo ristorante</h2>
                     <form method="POST" action="{{ route('admin.restaurants.store') }}" enctype="multipart/form-data">
                 @endif
                 @csrf
@@ -147,12 +144,7 @@
                             </button>
                         </div>
                     </div>
-                    {{-- Right Side Image Preview --}}
-                    {{-- <div class="d-flex flex-column">
-                <div class="image-upload border p-2">
-                    <img src="{{ $restaurant->image }}" alt="{{ $restaurant->title }}" id="image_preview">
-                </div>
-            </div> --}}
+
                 </div>
 
                 </form>
