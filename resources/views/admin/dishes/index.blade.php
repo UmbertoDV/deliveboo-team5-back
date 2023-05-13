@@ -8,7 +8,7 @@
                 class="fa-solid fa-diamond text-white me-2"></i>Aggiungi una tipologia</a>
 
         <a class="btn-violet" href="{{ route('admin.dishes.trash') }}"><i
-                class="fa-solid fa-trash-can  text-white me-2"></i>Trashcan</a>
+                class="fa-solid fa-trash-can  text-white me-2"></i>Cestino</a>
 
     </div>
     <div class="container">

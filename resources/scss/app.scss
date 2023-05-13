@@ -45,6 +45,11 @@ td {
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
     text-decoration: none;
+
+    &:hover {
+        color: white;
+        background-color: #BF3100;
+    }
 }
 
 .dishes-icons {
@@ -64,4 +69,20 @@ td {
 
 .table-primary a {
     text-decoration: none;
+}
+
+svg {
+    animation-name: logo;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+}
+
+@keyframes logo {
+    0% {
+        translate: (-170px);
+    }
+
+    100% {
+        translate: (0px);
+    }
 }

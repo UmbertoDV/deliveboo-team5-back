@@ -1,0 +1,26 @@
+@import "~bootstrap/scss/bootstrap";
+
+.show-restaurant {
+
+    img {
+        outline: 1px solid #5d4df5;
+        outline-offset: 10px;
+        border-radius: 1rem;
+        width: 60%;
+    }
+}
+
+.rest-show a {
+    background-color: #E9511D;
+    border: none;
+
+    &:hover {
+        color: white;
+        background-color: #BF3100;
+    }
+}
+
+.show-info-rest {
+    gap: 1rem;
+    font-size: 1.2rem;
+}
