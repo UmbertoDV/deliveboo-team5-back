@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->float('price')->unsigned();
             $table->text('image')->nullable();
-            $table->boolean('visibility');
+            $table->boolean('visibility')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

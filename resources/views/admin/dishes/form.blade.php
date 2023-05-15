@@ -55,7 +55,7 @@
                         </div>
 
                         {{-- SELECT TYPE --}}
-                        <div>
+                        {{-- <div>
                             <div class="">
                                 <label for="type class=" class="form-label">
                                     Tipologia
@@ -73,7 +73,7 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- PRICE --}}
                         <div>
