@@ -20,6 +20,10 @@
                 @if (!$restaurant->user_id)
                     <h2>Aggiungi il tuo ristorante</h2>
                     <form method="POST" action="{{ route('admin.restaurants.store') }}" enctype="multipart/form-data">
+                    @else
+                        <form method="POST" action="{{ route('admin.restaurants.update', $restaurant) }}"
+                            enctype="multipart/form-data">
+                            @method('put')
                 @endif
                 @csrf
                 <div class="input-container d-flex">
@@ -74,7 +78,7 @@
                         {{-- TELEFONO --}}
                         <div>
                             <div class="">
-                                <label for="type class=" class="form-label">
+                                <label for="type" class="form-label">
                                     Telefono
                                 </label>
                                 <input type="number" name="telephone" id="telephone"
@@ -104,7 +108,7 @@
                         {{-- P.IVA --}}
                         <div>
                             <div class="">
-                                <label for="type class=" class="form-label">
+                                <label for="type" class="form-label">
                                     P.iva
                                 </label>
                                 <input type="number" name="p_iva" id="p_iva"
@@ -116,6 +120,22 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+                        </div>
+
+                        {{-- TYPES --}}
+                        <div>
+                            <div class="">
+                                @foreach ($types as $type)
+                                    <label for="type-{{ $type->id }}" class="form-label">
+                                        {{ $type->name }}
+                                    </label>
+                                    <input type="checkbox" name="types[]" id="type-{{ $type->id }}"
+                                        class="form-check-control" value="{{ $type->id }}"
+                                        @if (in_array($type->id, old('types', $restaurant_type ?? []))) checked @endif>
+                                @endforeach
+
+
                             </div>
                         </div>
 

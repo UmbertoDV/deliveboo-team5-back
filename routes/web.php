@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Restaurant;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\HomeController;

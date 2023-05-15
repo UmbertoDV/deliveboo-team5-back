@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'user_id', 'address', 'email', 'telephone', 'description', 'p_iva', 'image'];
+    protected $fillable = ['name', 'user_id', 'address', 'email', 'telephone', 'description', 'p_iva', 'type_id', 'image'];
+
+    // protected $with = ['type'];
 
     public function types()
     {

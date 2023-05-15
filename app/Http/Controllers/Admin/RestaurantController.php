@@ -22,12 +22,13 @@ class RestaurantController extends Controller
      */
     public function index(Restaurant $restaurant)
     {
+        $type = Type::orderBy('name')->get();
         $user_id = Auth::id();
         $restaurants = Restaurant::where('user_id', $user_id)->get();
         $restaurant = User::find($user_id)->restaurant;
         // dd($restaurant);
 
-        return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant'));
+        return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant', 'type'));
     }
 
     /**
@@ -35,7 +36,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Restaurant $restaurant)
+    public function create(Restaurant $restaurant, Request $request)
     {
         $types = Type::orderBy('name')->get();
         return view('admin.restaurants.form', compact('restaurant', 'types'));
@@ -138,6 +139,7 @@ class RestaurantController extends Controller
                 'telephone' => 'required|string|max:15',
                 'description' => 'string',
                 'p_iva' => 'required|string',
+                'type_id' => 'nullable|exists:types,id',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg'
 
             ],
@@ -161,6 +163,8 @@ class RestaurantController extends Controller
 
                 'p_iva.required' => "La partita iva è obbligatoria",
                 'p_iva.string' => "La partita iva deve essere una stringa",
+
+                'type_id.exists' => "L'Id non è valido",
 
                 'image.image' => "Inserisci un file, per favore",
                 'image.mimes' => "I formati consentiti sono: jpg, png o jpeg",

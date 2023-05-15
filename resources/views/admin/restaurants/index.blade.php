@@ -24,6 +24,7 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">P.IVA</th>
+                    <th scope="col">Tipologia</th>
                     {{-- <th scope="col">Immagine</th> --}}
                     <th scope="col">Azioni</th>
                     <th scope="col"></th>
@@ -42,6 +43,8 @@
                         <td>{{ $restaurant->telephone }}</td>
                         <td>{{ $restaurant->getAbstract() }}</td>
                         <td>{{ $restaurant->p_iva }}</td>
+                        <td>{{ $restaurant->type?->name }}</td>
+                        {{-- @dump($restaurant); --}}
                         {{-- <td> --}}
                         {{-- <div class="p-2 d-flex align-items-center">
                                 <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image-prev-i"
