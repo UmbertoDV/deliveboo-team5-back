@@ -15,13 +15,8 @@ return new class extends Migration
     {
         Schema::create('restaurant_type', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('restaurant_id')
-                ->constrained()
-                ->cascadeOnDelete();
-
-            $table->foreignId('type_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('type_id')->constrained()->cascadeOnDelete();
         });
     }
 

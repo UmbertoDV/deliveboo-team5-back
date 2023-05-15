@@ -51,7 +51,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
 
     {
-        $data = $this->validation($request->all());
+        $data = $request->all();
 
         if (Arr::exists($data, 'image')) {
             $path = Storage::put('uploads/restaurants', $data['image']);
@@ -63,6 +63,10 @@ class RestaurantController extends Controller
         $restaurant->fill($data);
         $restaurant->user_id = $id;
         $restaurant->save();
+
+        if(Arr::exists($data, 'types')) $restaurant->types()->attach($data['types']);
+        // dd($restaurant);
+
         return redirect()->route('admin.restaurants.show', $restaurant);
     }
 

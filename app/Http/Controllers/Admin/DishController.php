@@ -33,6 +33,7 @@ class DishController extends Controller
 
         $user_id = $request->user()->id;
         $restaurant = User::find($user_id)->restaurant;
+        // dd($restaurant);
         $dishes = $restaurant->dishes;
 
         // $dishes = $dishes->sortByDesc($sort)->paginate(6)->withQueryString();
@@ -200,7 +201,8 @@ class DishController extends Controller
         $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : 'updated_at';
         $order = (!empty($order_request = $request->get('order'))) ? $order_request : 'ASC';
 
-        $dishes = Dish::onlyTrashed($sort, $order)->paginate(10)->withQueryString();
+        $dishes = Dish::onlyTrashed($sort, $order)->paginate(10);
+        $dishes->appends($_GET);
 
         return view('admin.dishes.trash', compact('dishes', 'sort', 'order'));
     }
