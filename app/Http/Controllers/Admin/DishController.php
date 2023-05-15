@@ -157,9 +157,9 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $id_dish = $dish->id;
-        if ($dish->image) {
-            Storage::delete($dish->image);
-        }
+        // if ($dish->image) {
+        //     Storage::delete($dish->image);
+        // }
 
         $dish->delete();
         return to_route('admin.dishes.index', ['visibility' => 1])
@@ -210,9 +210,12 @@ class DishController extends Controller
         return view('admin.dishes.trash', compact('dishes', 'sort', 'order'));
     }
 
-    public function forceDelete(Int $id)
+    public function forceDelete(Dish $dish, Int $id)
     {
         $id_message = $id;
+        if ($dish->image) {
+            Storage::delete($dish->image);
+        }
         // Creo una variabile per salvarmi l'id--> per la variabile FLASH
         $id_dish = Dish::where('id', $id)->onlyTrashed()->first();
         $id_dish->forceDelete();

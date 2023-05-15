@@ -20,9 +20,9 @@ class DishOrderSeeder extends Seeder
         // $dish = Dish::find(1);
         // $dish->orders()->attach($dish, ['quantity' => 2]);
 
-        for ($i = 1; $i < 3; $i++) {
-            $dish = Dish::find($i);
-            $dish->orders()->attach($dish, ['quantity' => random_int(1, 20)]);
-        }
+        // for ($i = 1; $i < 3; $i++) {
+        //     $dish = Dish::find($i);
+        //     $dish->orders()->attach($dish, ['quantity' => random_int(1, 20)]);
+        // }
     }
 }
