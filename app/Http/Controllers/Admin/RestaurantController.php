@@ -51,7 +51,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
 
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
 
         if (Arr::exists($data, 'image')) {
             $path = Storage::put('uploads/restaurants', $data['image']);
@@ -149,7 +149,7 @@ class RestaurantController extends Controller
                 'telephone' => 'required|string|max:15',
                 'description' => 'string',
                 'p_iva' => 'required|string|max:11|min:11',
-                'type_id' => 'nullable|exists:types,id',
+                'types' => 'nullable|exists:types,id',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg'
 
             ],
