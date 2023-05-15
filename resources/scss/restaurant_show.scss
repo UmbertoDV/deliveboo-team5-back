@@ -24,3 +24,21 @@
     gap: 1rem;
     font-size: 1.2rem;
 }
+
+// Restaurant EDIT
+.restaurant-edit {
+    gap: 2rem;
+}
+
+.left-side-restaurant {
+    width: 50%;
+}
+
+.right-side-restaurant {
+    width: 50%;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

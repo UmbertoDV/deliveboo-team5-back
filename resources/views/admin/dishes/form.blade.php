@@ -81,7 +81,7 @@
                                 <label for="type class=" class="form-label">
                                     Prezzo
                                 </label>
-                                <input type="number" name="price" id="price"
+                                <input type="number" name="price" id="price" step="0.01" min="0"
                                     class="@error('price') is-invalid @enderror form-control"
                                     value="{{ old('price', $dish->price) }}">
                                 @error('price')

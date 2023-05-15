@@ -45,9 +45,9 @@
                         <td>{{ $restaurant->p_iva }}</td>
                         <td>
                             @forelse ($restaurant->types as $type)
-                            {{ $type->name }}
+                                {{ $type->name }}
                             @empty
-                            -
+                                -
                             @endforelse
                         </td>
                         {{-- @dd($restaurant); --}}

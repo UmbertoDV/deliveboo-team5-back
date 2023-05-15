@@ -42,4 +42,9 @@ class Dish extends Model
         // dd($this->image);
         return $this->image ? asset('storage/' . $this->image) : 'https://picsum.photos/200';
     }
+
+    protected function getPriceAttribute($value)
+    {
+        return $this->attributes['price'] = number_format($value, 2);
+    }
 }

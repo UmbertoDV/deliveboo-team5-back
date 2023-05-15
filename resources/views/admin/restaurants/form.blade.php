@@ -14,7 +14,7 @@
             </a>
         </div>
 
-        <div class="my-5">
+        <div class="my-5 d-flex">
             <div class="body-form card p-3">
 
                 @if (!$restaurant->user_id)
@@ -26,9 +26,9 @@
                             @method('put')
                 @endif
                 @csrf
-                <div class="input-container d-flex">
+                <div class="container restaurant-edit d-flex">
                     {{-- Left side --}}
-                    <div class="d-flex flex-column">
+                    <div class="left-side-restaurant d-flex flex-column">
 
                         {{-- NOME ATTIVITA' --}}
                         <div class="title-container">
@@ -132,7 +132,7 @@
                                         {{ $type->name }}
                                     </label>
                                     <input type="checkbox" name="types[]" id="type-{{ $type->id }}"
-                                        value="{{ $type->id }}" class="form-check-control"
+                                        value="{{ $type->id }}" class="form-check-control me-3"
                                         @if (in_array($type->id, old('type', $restaurant_type ?? []))) checked @endif>
                                 @endforeach
                                 @error('types')
@@ -145,7 +145,7 @@
                         </div>
 
                         {{-- IMMAGINE --}}
-                        <div class="image-container mt-1">
+                        <div class="image-container mt-2">
                             <div class="">
                                 <label for="image" class="form-label">
                                     Immagine
@@ -161,7 +161,6 @@
                             </div>
                         </div>
 
-
                         {{-- Button --}}
                         <div class="align-self-end">
                             <button type="submit" class="btn btn-primary mt-4">
@@ -170,8 +169,13 @@
                         </div>
                     </div>
 
+                    {{-- Right Side Image Preview --}}
+                    <div class="right-side-restaurant d-flex flex-column">
+                        <div class="image image-upload p-2">
+                            <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image_preview">
+                        </div>
+                    </div>
                 </div>
-
                 </form>
             </div>
         </div>
