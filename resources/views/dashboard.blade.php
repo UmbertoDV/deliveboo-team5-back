@@ -18,7 +18,12 @@
                             </div>
                         @endif
 
-                        {{ __('Inserisci un ristorante!') }}
+                        {{-- {{ __('Inserisci un ristorante!') }} --}}
+                        <div class="my-3">
+                            <a href="{{ route('admin.restaurants.create') }}" class="btn-violet">
+                                Aggiungi il tuo ristorante
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
