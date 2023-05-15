@@ -125,14 +125,23 @@
 
                         {{-- TYPES --}}
                         <div>
-                            <div class="">
+
+                            <div class="mt-4 form-check @error('types') is-invalid @enderror">
                                 @foreach ($types as $type)
                                     <label for="type-{{ $type->id }}" class="form-label">
                                         {{ $type->name }}
                                     </label>
-                                    <input type="checkbox" name="types[]" id="type-{{ $type->id }}" value="{{ $type->id }}" class="form-check-control" @if (in_array($type->id, old('types', $restaurant_type ?? []))) checked @endif>
+                                    <input type="checkbox" name="types[]" id="type-{{ $type->id }}"
+                                        value="{{ $type->id }}" class="form-check-control"
+                                        @if (in_array($type->id, old('type', $restaurant_type ?? []))) checked @endif>
                                 @endforeach
+                                @error('types')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+
                         </div>
 
                         {{-- IMMAGINE --}}
@@ -168,5 +177,4 @@
         </div>
         </section>
     </div>
-    <script></script>
 @endsection

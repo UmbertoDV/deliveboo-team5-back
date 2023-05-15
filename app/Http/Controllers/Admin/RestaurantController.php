@@ -64,7 +64,7 @@ class RestaurantController extends Controller
         $restaurant->user_id = $id;
         $restaurant->save();
 
-        if(Arr::exists($data, 'types')) $restaurant->types()->attach($data['types']);
+        if (Arr::exists($data, 'types')) $restaurant->types()->attach($data['types']);
         // dd($restaurant);
 
         return redirect()->route('admin.restaurants.show', $restaurant);
@@ -89,7 +89,10 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.form', compact('restaurant'));
+        $types = Type::orderBy('name')->get();
+        //
+        $restaurant_type = $restaurant->types->pluck('id')->toArray();
+        return view('admin.restaurants.form', compact('restaurant', 'restaurant_type', 'types'));
     }
 
     /**
@@ -109,6 +112,9 @@ class RestaurantController extends Controller
             $path = Storage::put('uploads/restaurants', $data['image']);
             $data['image'] = $path;
         };
+
+        if (Arr::exists($data, 'types')) $restaurant->types()->sync($data['types']);
+        else $restaurant->types()->detach();
 
         $restaurant->update($data);
         return redirect()->route('admin.restaurants.show', $restaurant);
@@ -139,10 +145,10 @@ class RestaurantController extends Controller
             [
                 'name' => 'required|string|max:80',
                 'address' => 'required|string|max:100',
-                'email' => 'string|max:80',
+                'email' => 'string|max:80|email:rfc,dns',
                 'telephone' => 'required|string|max:15',
                 'description' => 'string',
-                'p_iva' => 'required|string',
+                'p_iva' => 'required|string|max:11|min:11',
                 'type_id' => 'nullable|exists:types,id',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg'
 
@@ -158,6 +164,7 @@ class RestaurantController extends Controller
 
                 'email.string' => "La mail deve essere una stringa",
                 'email.max' => "La mail può contenere massimo 80 caratteri",
+                'email.email' => "Il formato dell'email non è corretto",
 
                 'telephone.required' => 'Il numero del ristorante è obbligatorio',
                 'telephone.string' => 'Il numero del ristorante deve essere una stringa',
@@ -167,6 +174,8 @@ class RestaurantController extends Controller
 
                 'p_iva.required' => "La partita iva è obbligatoria",
                 'p_iva.string' => "La partita iva deve essere una stringa",
+                'p_iva.max' => "La partita iva deve avere 11 caratteri",
+                'p_iva.min' => "La partita iva deve avere 11 caratteri",
 
                 'type_id.exists' => "L'Id non è valido",
 
