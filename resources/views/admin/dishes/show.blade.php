@@ -7,15 +7,10 @@
             <div class="mt-5 mb-4">
                 {{-- Se stai modificando i progetti pubblicati torna li alla fine della modifica --}}
 
-                @if ($dish->visibility == 1)
-                    <a class="mt-5 mb-3" href="{{ route('admin.dishes.index', ['visibility' => 1]) }}"> Torna
-                        Indietro</a>
-                @else
-                    {{-- sennò vai alla bozze --}}
-                    <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.dishes.index', ['visibility' => 0]) }}">Vai
-                        alle
-                        bozze</a>
-                @endif
+
+                <a class="mt-5 mb-3" href="{{ route('admin.dishes.index') }}"> Torna
+                    Indietro</a>
+
             </div>
 
             <div class="card show-card-dish" style="width: 18rem;">

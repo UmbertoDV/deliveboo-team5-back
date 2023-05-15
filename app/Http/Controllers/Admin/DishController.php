@@ -26,10 +26,10 @@ class DishController extends Controller
         $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : 'updated_at';
         $order = (!empty($order_request = $request->get('order'))) ? $order_request : 'ASC';
 
-        $dishes = Dish::where('id', '>', 0);
-        if (isset($request->visibility)) {
-            $dishes->where('visibility', '=', $request->visibility);
-        }
+        // $dishes = Dish::where('id', '>', 0);
+        // if (isset($request->visibility)) {
+        //     $dishes->where('visibility', '=', $request->visibility);
+        // }
 
         $user_id = $request->user()->id;
         $restaurant = User::find($user_id)->restaurant;
@@ -78,7 +78,7 @@ class DishController extends Controller
         $dish = new Dish;
         $dish->fill($data);
 
-        $data['visibility'] = $request->has('visibility') ? 1 : 0;
+        // $data['visibility'] = $request->has('visibility') ? 1 : 0;
 
         // Collegamento con id_restaurant
         $user_id = $request->user()->id;
@@ -140,7 +140,7 @@ class DishController extends Controller
 
         $dish->fill($data);
 
-        $data['visibility'] = $request->has('visibility') ? 1 : 0;
+        // $data['visibility'] = $request->has('visibility') ? 1 : 0;
         $dish->save();
 
         return to_route('admin.dishes.show', $dish)
@@ -157,12 +157,12 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $id_dish = $dish->id;
-        // if ($dish->image) {
-        //     Storage::delete($dish->image);
-        // }
+        if ($dish->image) {
+            Storage::delete($dish->image);
+        }
 
         $dish->delete();
-        return to_route('admin.dishes.index', ['visibility' => 1])
+        return to_route('admin.dishes.index')
             ->with('message_type', "danger")
             ->with('message-content', "Il piatto con $id_dish spostato nel cestino!");
     }
@@ -210,16 +210,18 @@ class DishController extends Controller
         return view('admin.dishes.trash', compact('dishes', 'sort', 'order'));
     }
 
-    public function forceDelete(Dish $dish, Int $id)
+    public function forceDelete(Int $id)
     {
         $id_message = $id;
+
+        // Creo una variabile per salvarmi l'id--> per la variabile FLASH
+        $dish = Dish::where('id', $id)->onlyTrashed()->first();
         if ($dish->image) {
             Storage::delete($dish->image);
         }
-        // Creo una variabile per salvarmi l'id--> per la variabile FLASH
-        $id_dish = Dish::where('id', $id)->onlyTrashed()->first();
-        $id_dish->forceDelete();
-        return to_route('admin.dishes.index')
+        $dish->forceDelete();
+
+        return to_route('admin.dishes.trash')
             ->with('message_type', "danger")
             ->with('message-content', "Il piatto con ID: $id_message è stato eliminato definitivamente!");;
     }

@@ -130,13 +130,14 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-start">
-                        Sei sicuro di voler spostare nel cestino il piatto: <strong>{{ $dish->name }}</strong> con ID
+                        Sei sicuro di voler eliminare definitivamente il piatto: <strong>{{ $dish->name }}</strong> con
+                        ID
                         <strong> {{ $dish->id }}</strong>? <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
 
-                        <form action="{{ route('admin.dishes.force-delete', $dish) }}" method="POST" class="">
+                        <form action="{{ route('admin.dishes.force-delete', $dish->id) }}" method="POST" class="">
                             @method('delete')
                             @csrf
 
