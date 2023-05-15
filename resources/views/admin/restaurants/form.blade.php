@@ -9,9 +9,9 @@
                 {{ $restaurant->user_id ? 'Modifica informazioni ristorante' : '' }}
             </h2>
 
-            <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
+            {{-- <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
                 Vai al Menu
-            </a>
+            </a> --}}
         </div>
 
         <div class="my-5 d-flex">
