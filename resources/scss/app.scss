@@ -145,3 +145,27 @@ td {
 #Deliveboo_home {
     width: 500px;
 }
+
+.home-logo {
+    width: 350px;
+    margin-bottom: 21px;
+}
+
+.homelogo-text {
+    margin-bottom: 0px;
+    color: #FF4E00;
+    font-size: 4rem;
+}
+
+.btn-violet-home {
+    background-color: #5d4df5;
+    color: white;
+    padding: 0.5rem 0.9rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #2f1be3;
+        color: white;
+    }
+}

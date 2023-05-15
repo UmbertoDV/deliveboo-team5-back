@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="jumbotron p-5 mb-4 bg-light rounded-3">
-        <div class="container py-5">
-            <h1 class="display-5 fw-bold">
-                Benvenuto su
-            </h1>
-            <div class="logo_deliveboo">
-                <svg id="Deliveboo_home" data-name="Deliveboo_home" xmlns="http://www.w3.org/2000/svg"
+        <div class="container">
+            <div class="gap-3 d-flex align-items-end">
+                <div class="fw-bold homelogo-text">
+                    Benvenuto su
+                </div>
+                <div class="logo_deliveboo">
+                    {{-- <svg id="Deliveboo_home" data-name="Deliveboo_home" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 938.48 320.88">
                     <defs>
                         <style>
@@ -60,23 +61,22 @@
                         d="M309.58,152a10.86,10.86,0,0,0-7.39-2.6,12.33,12.33,0,0,0-8.24,3.05q-3.56,3-3.56,8.62a10,10,0,0,0,3.11,7.59,10.3,10.3,0,0,0,7.26,2.91,11.56,11.56,0,0,0,8.3-3.37,11.37,11.37,0,0,0,3.5-8.55C312.56,156.26,311.56,153.71,309.58,152Zm-3.44,27.74a4.14,4.14,0,0,0-4.21-2.85h-11.8l-4.67,41.62q-.51,4.41-.78,7.33t-.26,6.54a18.74,18.74,0,0,0,1.3,7c.86,2.16,2.08,3.25,3.63,3.25H300.5q.39-3,.84-6.36c.31-2.24.67-4.88,1.11-7.91s.86-6.69,1.29-11l2.47-21.13q.51-4.16.77-6.16a28.63,28.63,0,0,0,.26-3.82A18.06,18.06,0,0,0,306.14,179.72Z" />
                     <path class="cls-22"
                         d="M561.43,206.18a9.09,9.09,0,0,1-2.8,6.85,9.25,9.25,0,0,1-6.64,2.7,8.15,8.15,0,0,1-3.77-.89,8.67,8.67,0,0,1-2-1.45,7.93,7.93,0,0,1-2.49-6.07,8.54,8.54,0,0,1,2.86-6.89,9.8,9.8,0,0,1,6.58-2.44,8.74,8.74,0,0,1,5.92,2.07,6.24,6.24,0,0,1,.92,1h0A8.37,8.37,0,0,1,561.43,206.18Z" />
-                </svg>
+                </svg> --}}
+                    <img class="home-logo" src="https://i.ibb.co/zZ2kPfd/deliveboodef.png" alt="">
+                </div>
             </div>
-
-
-            <p class="col-md-8 fs-4">This a preset package with Bootstrap 5 views for laravel projects including laravel
-                breeze/blade. It works from laravel 9.x to the latest release 10.x</p>
-            <a href="https://packagist.org/packages/pacificdev/laravel_9_preset" class="btn btn-primary btn-lg"
-                type="button">Iscriviti</a>
+            <div>
+                <h2 class="col-md-8 fs-4 mt-3">Diventa un partner!</h2>
+                <a href="{{ route('register') }}" class="btn-violet-home btn-lg mt-3" type="button">Iscriviti</a>
+            </div>
         </div>
+
     </div>
 
 
     <div class="content">
         <div class="container">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora temporibus, dicta nemo aliquam totam nisi
-                deserunt soluta quas voluptatum ab beatae praesentium necessitatibus minus, facilis illum rerum officiis
-                accusamus dolores!</p>
+            <h3>Insieme possiamo aiutarti a raggiungere sempre più clienti!</h3>
         </div>
     </div>
 @endsection
