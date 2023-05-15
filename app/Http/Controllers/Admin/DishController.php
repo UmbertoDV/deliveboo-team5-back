@@ -34,8 +34,10 @@ class DishController extends Controller
         $user_id = $request->user()->id;
         $restaurant = User::find($user_id)->restaurant;
         // dd($restaurant);
+        if ($restaurant) {
             $dishes = $restaurant->dishes;
-            // dd($dishes);
+        }
+        // dd($dishes);
 
         // $dishes = $dishes->sortByDesc($sort)->paginate(6)->withQueryString();
 
