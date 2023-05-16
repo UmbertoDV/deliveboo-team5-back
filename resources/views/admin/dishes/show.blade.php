@@ -18,6 +18,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $dish->name }}</h5>
                     <p class="card-text">{{ $dish->description }}</p>
+                    <span>{{ $dish->price }}</span>
                     <div class="icon-show-dish">
                         <a href="{{ route('admin.dishes.edit', $dish) }}"> Modifica <i class="fa-solid fa-pen mt-2"></i></a>
                     </div>

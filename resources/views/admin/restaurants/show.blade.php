@@ -24,7 +24,7 @@
             </div>
 
             <div class="show-restaurant d-flex">
-                <img src="{{ $restaurant->getImageUri() }}" class="card-img-top" alt="...">
+                <img src="{{ $restaurant->getImageUri() }}" class="card-img-top card-show-restaurant" alt="...">
                 <div class="show-info-rest ms-5 d-flex flex-column">
                     <div>
                         @forelse ($restaurant->types as $type)
@@ -35,7 +35,7 @@
                             -
                         @endforelse
                     </div>
-                    <div><strong>Ristorante: </strong> {{ $restaurant->name }} </div>
+                    <div><strong>Ristorante: </strong> {{ $restaurant->_name_restaurant }} </div>
                     <div><strong>Indirizzo: </strong> {{ $restaurant->address }} </div>
                     <div> <strong>Telefono: </strong> {{ $restaurant->telephone }} </div>
                     <div><strong>Descrizione: </strong> {{ $restaurant->description }}</div>
