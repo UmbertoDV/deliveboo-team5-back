@@ -37,7 +37,8 @@ class RegisteredUserController extends Controller
     {
         $data = $request->all();
 
-        $request->validate([
+        $request->validate(
+            [
                 'name' => ['required', 'string', 'max:255'],
                 'surname' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
@@ -51,13 +52,13 @@ class RegisteredUserController extends Controller
                 'image' => 'nullable|image|mimes:jpg,png,jpeg'
             ],
             [
-                'name.required' => 'Il nome del ristorante è obbligatorio',
-                'name.string' => 'Il nome del ristorante deve essere una stringa',
-                'name.max' => 'Il nome del ristorante deve avere massimo 255 caratteri',
+                'name.required' => 'Il nome è obbligatorio',
+                'name.string' => 'Il nome deve essere una stringa',
+                'name.max' => 'Il nome deve avere massimo 255 caratteri',
 
-                'surname.required' => 'Il nome del ristorante è obbligatorio',
-                'surname.string' => 'Il nome del ristorante deve essere una stringa',
-                'surname.max' => 'Il nome del ristorante deve avere massimo 255 caratteri',
+                'surname.required' => 'Il cognome  è obbligatorio',
+                'surname.string' => 'Il cognome deve essere una stringa',
+                'surname.max' => 'Il cognome deve avere massimo 255 caratteri',
 
                 'name_restaurant.required' => 'Il nome del ristorante è obbligatorio',
                 'name_restaurant.string' => 'Il nome del ristorante deve essere una stringa',
@@ -67,9 +68,13 @@ class RegisteredUserController extends Controller
                 'address.string' => "L'indirizzo del ristorante deve essere una stringa",
                 'address.max' => "L'indirizzo del ristorante deve avere massimo 100 caratteri",
 
+                'email.required' => "L'email è obbligatoria",
                 'email.string' => "La mail deve essere una stringa",
                 'email.max' => "La mail può contenere massimo 80 caratteri",
                 'email.email' => "Il formato dell'email non è corretto",
+                'email.unique' => "Questa email è stata già usata",
+
+                'password.required' => 'La password è obbligatoria',
 
                 'telephone.required' => 'Il numero del ristorante è obbligatorio',
                 'telephone.string' => 'Il numero del ristorante deve essere una stringa',
