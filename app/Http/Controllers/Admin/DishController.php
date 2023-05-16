@@ -106,7 +106,20 @@ class DishController extends Controller
     {
         $types = Type::orderBy('name')->get();
         // ROTTA SHOW!
-        return view('admin.dishes.show', compact('dish', 'types'));
+        $rest = null;
+        $id_user = Auth::user()->id;
+        $restaurant_logged_user = Restaurant::where('user_id','=', $id_user)->get();
+        $id_ristorante_del_piatto = $dish->restaurant_id;
+
+        foreach ($restaurant_logged_user as $rest){
+            $rest = $rest->id;
+        }
+        if ($id_ristorante_del_piatto != $rest){
+            return redirect()->action([DishController::class, 'index']);
+        } else {
+            return view('admin.dishes.show', compact('dish', 'types'));
+        }
+        
     }
 
     /**
