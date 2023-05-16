@@ -144,7 +144,7 @@
         </nav>
 
         <main class="">
-            <div class="container">
+            <div class="">
                 @yield('content')
             </div>
         </main>
