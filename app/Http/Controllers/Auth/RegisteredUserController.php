@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Type;
 use Illuminate\Support\Arr;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\Storage;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -35,6 +36,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $request->all();
+
         $request->validate(
             [
                 'name' => ['required', 'string', 'max:255'],
@@ -88,12 +90,19 @@ class RegisteredUserController extends Controller
             ]
         );
 
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if (Arr::exists($data, 'image')) {
+            $path = Storage::put('uploads/restaurants', $data['image']);
+            $data['image'] = $path;
+        };
+
         $restaurant = Restaurant::create([
             'user_id' => $user->id,
             'name_restaurant' => $request->name_restaurant,
@@ -103,7 +112,9 @@ class RegisteredUserController extends Controller
             'description' => $request->description,
             'types' => $request->types,
             'image' => $request->image,
-        ]);;
+        ]);
+
+
         // Se esiste il dato Types allora "attaccalo" al restaurant.
         if (Arr::exists($data, "types")) $restaurant->types()->attach($data["types"]);
 
