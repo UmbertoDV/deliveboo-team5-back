@@ -4,8 +4,7 @@
     <div class="container mt-5 mb-4">
         <a class="btn-violet" href="{{ route('admin.dishes.create') }}"><i
                 class="fa-solid fa-circle-plus  text-white me-2"></i>Aggiungi un nuovo piatto</a>
-        <a class="btn-violet" href="{{ route('admin.types.index') }}"><i
-                class="fa-solid fa-diamond text-white me-2"></i>Aggiungi una tipologia</a>
+
 
         <a class="btn-violet" href="{{ route('admin.dishes.trash') }}"><i
                 class="fa-solid fa-trash-can  text-white me-2"></i>Cestino</a>
