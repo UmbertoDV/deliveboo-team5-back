@@ -72,6 +72,7 @@ class RegisteredUserController extends Controller
                 'email.string' => "La mail deve essere una stringa",
                 'email.max' => "La mail può contenere massimo 80 caratteri",
                 'email.email' => "Il formato dell'email non è corretto",
+                'email.unique' => "Questa email è stata già usata",
 
                 'password.required' => 'La password è obbligatoria',
 
