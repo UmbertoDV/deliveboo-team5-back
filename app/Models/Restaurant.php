@@ -34,6 +34,6 @@ class Restaurant extends Model
 
     public function getImageUri()
     {
-        return $this->image ? asset('storage/' . $this->image) : "https://picsum.photos/200";
+        return $this->image ? asset('storage/' . $this->image) : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
     }
 }
