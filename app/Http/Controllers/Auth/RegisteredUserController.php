@@ -98,7 +98,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if (Arr::exists($data, 'image')) {
+        if (!empty($data['image'])) {
             $path = Storage::put('uploads/restaurants', $data['image']);
             $data['image'] = $path;
         };
@@ -111,7 +111,7 @@ class RegisteredUserController extends Controller
             'telephone' => $request->telephone,
             'description' => $request->description,
             'types' => $request->types,
-            'image' => $request->image,
+            'image' => isset($data['image']) ? $data['image'] : asset('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png')
         ]);
 
 

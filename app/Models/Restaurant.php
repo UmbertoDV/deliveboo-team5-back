@@ -31,9 +31,4 @@ class Restaurant extends Model
     {
         return substr($this->description, 0, $max) . "...";
     }
-
-    public function getImageUri()
-    {
-        return $this->image ? asset('storage/' . $this->image) : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
-    }
 }
