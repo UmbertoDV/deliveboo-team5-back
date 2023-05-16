@@ -22,7 +22,7 @@
             </div>
             <div class="col-6">
               <h2 class="text-center mb-2">Immagine</h2>
-              <img class="mx-auto d-block rounded types-image-preview" id="image-preview" src="{{ $type->getImageUri() }}">
+              <img class="mx-auto d-block rounded types-image-preview" id="image-preview" src="{{ $type->image }}">
             </div>
           </div>
         </div>

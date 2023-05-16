@@ -3,7 +3,7 @@
 .types-image-preview {
     width: 400px;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .force-width {
@@ -11,4 +11,7 @@
 }
 .see-color-type {
     background-color: black;
+}
+.personal-w {
+    width: 15%;
 }

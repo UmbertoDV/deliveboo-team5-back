@@ -17,6 +17,7 @@
             <th scope="col">@sortablelink('id', 'ID')</th>
             <th scope="col">@sortablelink('name', 'Nome')</th>
             <th scope="col">Colore</th>
+            <th scope="col">Icona</th>
             <th scope="col">@sortablelink('updated_at', 'Ultima Modifica')</th>
             <th scope="col">@sortablelink('created_at', 'Data Creazione')</th>
             <th scope="col"></th>
@@ -28,6 +29,7 @@
               <th scope="row">{{ $type->id }}</th>
               <td>{{ $type->name }}</td>
               <td>{!! $type->getBadgeHTML() !!}</td>
+              <td class="personal-w"><img style="width: 20%" src="{{ $type->image }}" alt="{{ $type->name }}"></td>
               <td>{{ $type->updated_at }}</td>
               <td>{{ $type->created_at }}</td>
               <td>
