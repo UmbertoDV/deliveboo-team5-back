@@ -22,13 +22,16 @@ class RestaurantController extends Controller
      */
     public function index(Restaurant $restaurant)
     {
-        $type = Type::orderBy('name')->get();
+        $types = Type::orderBy('name')->get();
+        // dd($types);
+
         $user_id = Auth::id();
+        $user = Auth::user();
         $restaurants = Restaurant::where('user_id', $user_id)->get();
         $restaurant = User::find($user_id)->restaurant;
         // dd($restaurant);
 
-        return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant', 'type'));
+        return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant', 'types', 'user'));
     }
 
     /**
@@ -143,7 +146,7 @@ class RestaurantController extends Controller
         $validator = Validator::make(
             $data,
             [
-                'name' => 'required|string|max:80',
+                'name_restaurant' => 'required|string|max:80',
                 'address' => 'required|string|max:100',
                 'email' => 'string|max:80|email:rfc,dns',
                 'telephone' => 'required|string|max:15',
@@ -154,9 +157,9 @@ class RestaurantController extends Controller
 
             ],
             [
-                'name.required' => 'Il nome del ristorante è obbligatorio',
-                'name.string' => 'Il nome del ristorante deve essere una stringa',
-                'name.max' => 'Il nome del ristorante deve avere massimo 80 caratteri',
+                'name_restaurant.required' => 'Il nome del ristorante è obbligatorio',
+                'name_restaurant.string' => 'Il nome del ristorante deve essere una stringa',
+                'name_restaurant.max' => 'Il nome del ristorante deve avere massimo 80 caratteri',
 
                 'address.required' => "L'indirizzo del ristorante è obbligatorio",
                 'address.string' => "L'indirizzo del ristorante deve essere una stringa",
@@ -181,7 +184,6 @@ class RestaurantController extends Controller
 
                 'image.image' => "Inserisci un file, per favore",
                 'image.mimes' => "I formati consentiti sono: jpg, png o jpeg",
-
 
             ]
         )->validate();

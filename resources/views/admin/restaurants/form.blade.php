@@ -32,13 +32,13 @@
 
                         {{-- NOME ATTIVITA' --}}
                         <div class="title-container">
-                            <label for="name" class="form-label">
+                            <label for="name_restaurant" class="form-label">
                                 Nome attività
                             </label>
-                            <input type="text" name="name" id="name"
-                                class="@error('name') is-invalid @enderror form-control"
-                                value="{{ old('name', $restaurant->name) }}">
-                            @error('name')
+                            <input type="text" name="name_restaurant" id="name_restaurant"
+                                class="@error('name_restaurant') is-invalid @enderror form-control"
+                                value="{{ old('name_restaurant', $restaurant->name_restaurant) }}">
+                            @error('name_restaurant')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -54,21 +54,6 @@
                                 class="@error('address') is-invalid @enderror form-control"
                                 value="{{ old('address', $restaurant->address) }}">
                             @error('address')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        {{-- EMAIL --}}
-                        <div class="title-container">
-                            <label for="email" class="form-label">
-                                Email
-                            </label>
-                            <input type="text" name="email" id="email"
-                                class="@error('email') is-invalid @enderror form-control"
-                                value="{{ old('email', $restaurant->email) }}">
-                            @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

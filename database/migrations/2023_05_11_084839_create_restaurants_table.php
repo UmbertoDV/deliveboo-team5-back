@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('name', 80);
+            $table->string('name_restaurant', 255);
             $table->string('address', 100)->unique();
-            $table->string('email', 80)->unique();
             $table->string('telephone', 15)->unique();
             $table->text('description')->nullable();
             $table->string('p_iva')->unique();
