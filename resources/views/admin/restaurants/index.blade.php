@@ -37,9 +37,9 @@
 
                 @foreach ($restaurants as $restaurant)
                     <tr>
-                        <th scope="row">{{ $restaurant->name }}</th>
+                        <th scope="row">{{ $restaurant->name_restaurant }}</th>
                         <td>{{ $restaurant->address }}</td>
-                        <td>{{ $restaurant->email }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>{{ $restaurant->telephone }}</td>
                         <td>{{ $restaurant->getAbstract() }}</td>
                         <td>{{ $restaurant->p_iva }}</td>
@@ -50,13 +50,6 @@
                                 -
                             @endforelse
                         </td>
-                        {{-- @dd($restaurant); --}}
-                        {{-- <td> --}}
-                        {{-- <div class="p-2 d-flex align-items-center">
-                                <img src="{{ $restaurant->getImageUri() }}" alt="{{ $restaurant->name }}" id="image-prev-i"
-                                    class="img">
-                            </div> --}}
-                        {{-- </td> --}}
                         <td class="d-flex">
                             <a href="{{ route('admin.restaurants.show', $restaurant) }}">
                                 <i class="bi bi-eye mx-2"> </i>
