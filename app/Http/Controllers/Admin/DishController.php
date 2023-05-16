@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Dish;
 use App\Models\Type;
+use App\Models\Restaurant;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -11,6 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -113,11 +115,23 @@ class DishController extends Controller
      * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish)
+    public function edit(Dish $dish, Request $request)
     {
         $types = Type::orderBy('name')->get();
 
-        return view('admin.dishes.form', compact('dish', 'types'));
+        $rest = null;
+        $id_user = Auth::user()->id;
+        $restaurant_logged_user = Restaurant::where('user_id','=', $id_user)->get();
+        $id_ristorante_del_piatto = $dish->restaurant_id;
+
+        foreach ($restaurant_logged_user as $rest){
+            $rest = $rest->id;
+        }
+        if ($id_ristorante_del_piatto != $rest){
+            return redirect()->action([DishController::class, 'index']);
+        } else {
+            return view('admin.dishes.form', compact('dish', 'types'));
+        }
     }
 
     /**
