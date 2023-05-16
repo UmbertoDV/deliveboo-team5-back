@@ -26,7 +26,7 @@ class DishController extends Controller
         $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : 'updated_at';
         $order = (!empty($order_request = $request->get('order'))) ? $order_request : 'ASC';
 
-        // $dishes = Dish::where('id', '>', 0);
+        $dishes = Dish::where('id', '>', 0);
         // if (isset($request->visibility)) {
         //     $dishes->where('visibility', '=', $request->visibility);
         // }
