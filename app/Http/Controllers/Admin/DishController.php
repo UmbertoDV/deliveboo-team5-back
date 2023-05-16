@@ -157,9 +157,6 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $id_dish = $dish->id;
-        if ($dish->image) {
-            Storage::delete($dish->image);
-        }
 
         $dish->delete();
         return to_route('admin.dishes.index')
