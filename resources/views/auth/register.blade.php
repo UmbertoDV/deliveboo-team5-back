@@ -292,6 +292,6 @@
     </script>
 @endsection
 
-@push('js')
+{{-- @push('js')
     <script src="{{ asset('js/validation.js') }}"></script>
-@endpush
+@endpush --}}

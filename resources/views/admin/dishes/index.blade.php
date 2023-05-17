@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-{{ session('message_type') ? session('message_type') : 'success' }}">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <div class="container mt-5 mb-4">
         <a class="btn-violet" href="{{ route('admin.dishes.create') }}"><i
                 class="fa-solid fa-circle-plus  text-white me-2"></i>Aggiungi un nuovo piatto</a>
@@ -111,9 +117,7 @@
                         <td>{{ $dish->created_at }}</td>
                         <td>{{ $dish->updated_at }}</td>
                         <td class="dishes-icons text-center">
-                            <div>
-                                <a href="{{ route('admin.dishes.show', $dish) }}"><i class="fa-solid fa-eye mt-2"></i></a>
-                            </div>
+
                             <div>
                                 <a href="{{ route('admin.dishes.edit', $dish) }}"><i class="fa-solid fa-pen mt-2"></i></a>
                             </div>
@@ -143,7 +147,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="delete-modal-{{ $dish->id }}-label">Conferma eliminazione</h1>
+                        <h1 class="modal-title fs-5" id="delete-modal-{{ $dish->id }}-label">Conferma eliminazione
+                        </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-start">

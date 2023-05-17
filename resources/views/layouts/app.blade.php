@@ -92,6 +92,12 @@
                                 <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                             </li>
                         </ul>
+                    @else
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/homepage') }}">{{ __('Home') }}</a>
+                            </li>
+                        </ul>
                     @endif
 
                     <!-- Right Side Of Navbar -->
