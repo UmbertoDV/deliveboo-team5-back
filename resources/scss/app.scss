@@ -96,10 +96,19 @@ td {
 // SHOW DISHES
 
 .form-dish-bg {
-    background: #bc48ff;
-    background: -webkit-radial-gradient(circle, #bc48ff 0%, #474bff 100%);
-    background: radial-gradient(circle, #bc48ff 0%, #474bff 100%);
-    height: 100vh;
+    // background: #bc48ff;
+    // background: -webkit-radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+    // background: radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+    // height: 100vh;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+
+    .form-contain-dish {
+        position: absolute;
+    }
 
     .reg-card {
         background: rgba(255, 255, 255, 0.25);
@@ -200,6 +209,30 @@ td {
     }
 }
 
+// ANIMATION
+.gradient {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(334deg, #6b97f7, #5d4df5, #f7137e);
+    background-size: 180% 180%;
+    animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    80% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+// HOME
 #Deliveboo_home {
     width: 500px;
 }
@@ -228,18 +261,17 @@ td {
     }
 }
 
-.image-upload{
-    img{
-        width: 300px;
-            height: 300px;
-            object-fit: contain;
-            outline-offset: 4px;
-            outline: 1px solid #5d4df5;
-            border-radius: 20px;
+.image-upload {
+    img {
+        width: 100%;
+        object-fit: contain;
+        outline-offset: 4px;
+        outline: 1px solid #5d4df5;
+        border-radius: 20px;
     }
 }
 
-i{
+i {
     text-decoration: none;
     cursor: pointer;
 }

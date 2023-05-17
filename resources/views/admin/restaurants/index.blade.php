@@ -25,7 +25,7 @@
                 </a>
 
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary my-3 mb-4"> <i
-                        class="fa-solid fa-pen mt-2 me-2"> </i>Menù</a>
+                        class="fa-solid fa-bars mt-2 me-2"></i> </i>Menù</a>
             </div>
 
             <div class="show-restaurant d-flex">

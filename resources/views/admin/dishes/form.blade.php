@@ -4,9 +4,9 @@
     <div class="form-dish-bg">
         <section class="container form-contain-dish pt-4">
 
-            <a href="{{ route('admin.dishes.index') }}" class="btn-violet">
-                Vai al Menu
-            </a>
+
+            <a href="{{ route('admin.dishes.index') }}" class="btn-violet"> <i class="fa-solid fa-bars mt-2 me-2"></i>
+                </i>Menù</a>
             <div class="card reg-card mt-4">
                 <div class="card-header">
                     <h4 class="mb-2 ms-3 mt-2">{{ $dish->id ? 'Modifica ' . $dish->title : 'Aggiungi un nuovo piatto' }}
@@ -16,7 +16,8 @@
                 <div class="card-body card-dish p-3">
 
                     @if ($dish->id)
-                        <form method="POST" action="{{ route('admin.dishes.update', $dish) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.dishes.update', $dish) }}"
+                            enctype="multipart/form-data">
                             @method('put')
                         @else
                             <form method="POST" action="{{ route('admin.dishes.store') }}" enctype="multipart/form-data">
