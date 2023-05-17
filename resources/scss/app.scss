@@ -119,7 +119,6 @@ td {
 
     .form-contain-dish {
         position: absolute;
-        top: 300px;
 
     }
 
@@ -128,6 +127,7 @@ td {
         border-radius: 2rem;
         padding: 2rem 0rem;
         margin: 1rem 0rem;
+        top: 300px;
 
     }
 
@@ -312,6 +312,7 @@ i {
 
 .show-card-dish {
     img {
+        width: 200px;
         height: 200px;
         object-fit: cover;
     }
