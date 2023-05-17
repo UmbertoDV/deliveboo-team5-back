@@ -27,7 +27,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_deliveboo me-3">
