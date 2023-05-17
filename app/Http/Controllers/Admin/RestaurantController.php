@@ -81,6 +81,10 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        $user_id = $restaurant->user_id;
+        if ($user_id !== Auth::id()) {
+            return redirect()->route('admin.restaurants.index');
+        }
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
@@ -92,6 +96,11 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+        $user_id = $restaurant->user_id;
+        if ($user_id !== Auth::id()) {
+            return redirect()->route('admin.restaurants.index');
+        }
+
         $types = Type::orderBy('name')->get();
         //
         $restaurant_type = $restaurant->types->pluck('id')->toArray();
