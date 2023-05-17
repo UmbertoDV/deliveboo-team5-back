@@ -134,7 +134,7 @@
                     </div>
                     {{-- Right Side Image Preview --}}
                     <div class="right-side-dish d-flex flex-column">
-                        <div class="image image-upload border p-2">
+                        <div class="image image-upload p-2">
                             <img src="{{ $dish->getImageUri() }}" alt="{{ $dish->title }}" id="image_preview">
                         </div>
                     </div>

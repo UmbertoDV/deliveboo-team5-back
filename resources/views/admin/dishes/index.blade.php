@@ -91,7 +91,7 @@
                         @endif
                     </th>
 
-                    <th scope="col">Azioni</th>
+                    <th scope="col" class="text-primary">Azioni</th>
                 </tr>
             </thead>
             <tbody>

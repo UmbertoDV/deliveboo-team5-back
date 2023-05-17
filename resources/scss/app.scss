@@ -169,3 +169,19 @@ td {
         color: white;
     }
 }
+
+.image-upload{
+    img{
+        width: 300px;
+            height: 300px;
+            object-fit: contain;
+            outline-offset: 4px;
+            outline: 1px solid #5d4df5;
+            border-radius: 20px;
+    }
+}
+
+i{
+    text-decoration: none;
+    cursor: pointer;
+}
