@@ -36,9 +36,22 @@
         backdrop-filter: blur(7px);
         border: 1px solid rgba(255, 255, 255, 0.225);
     }
+}
 
+.types-reg {
+    padding-left: 11px;
+}
 
+// Anteprima immagine form
+.right-side-reg {
+    padding: 1rem;
 
+    img {
+        max-width: 90%;
+        // outline: 2px solid #5d4df5;
+        // outline-offset: 4px;
+        border: 1px dashed yellow;
+    }
 }
 
 .right-register {
@@ -50,6 +63,7 @@
     margin-right: 3px;
 }
 
+// BG ANIMATION
 body {
     margin: 0;
 }
@@ -62,8 +76,6 @@ body {
     animation: fade 5s infinite;
     animation-direction: alternate;
 }
-
-.row-1 {}
 
 .row-2 {
     animation-delay: 0.5s;
@@ -100,7 +112,6 @@ body {
 .row-10 {
     animation-delay: 4.5s;
 }
-
 
 
 @keyframes fade {

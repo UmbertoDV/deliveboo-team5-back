@@ -27,9 +27,9 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm {{ isset(Auth::user()->name) ? 'nav-bg' : 'navbar' }}">
             <div class="container">
-                <a class="d-flex align-items-center" href="{{ url('/') }}">
+                <a class="d-flex align-items-center" href="{{ url('dashboard') }}">
                     <div class="logo_deliveboo me-3">
                         <svg id="Deliveboo" data-name="Deliveboo" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 231.13 183.21">
@@ -86,11 +86,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
-                        </li>
-                    </ul>
+                    @if (!isset(Auth::user()->name))
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            </li>
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
