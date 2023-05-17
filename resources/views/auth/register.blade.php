@@ -9,8 +9,7 @@
                     <div class="card-header">{{ __('Registrazione') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data"
-                            onsubmit="return validateForm()">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" id="register-form">
                             @csrf
                             <div class="d-flex">
                                 <div class="col-3 right-register">
@@ -185,7 +184,7 @@
                                             P.iva
                                         </label>
                                         <div class="col-md-6">
-                                            <input type="number" name="p_iva" id="p_iva"
+                                            <input type="text" name="p_iva" id="p_iva"
                                                 class="@error('p_iva') is-invalid @enderror form-control"
                                                 value="{{ old('p_iva') }}" autocomplete="telephone" autofocus>
 
