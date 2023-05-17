@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="my-4">Lista ordini</h1>
+    <h1 class="my-4 ms-3">Lista ordini</h1>
+    <a class="btn-violet ms-3" href="{{ route('admin.orders.trash') }}"><i
+            class="fa-solid fa-trash-can  text-white me-2"></i>Cestino</a>
     <table class="table table-striped mt-5">
         <thead>
-            <tr>
+            <tr class="table-primary">
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
@@ -28,17 +30,12 @@
                     <td>€{{ $order->total }}</td>
                     <td class="d-flex">
                         <a href={{ route('admin.orders.show', $order) }}>
-                            <button type="button" class="btn btn-primary me-2">
-                                {{-- <i class="fa-regular fa-eye"></i> --}}
-                                Dettagli
-                            </button>
+                            <i class=" btn-order fa-solid fa-eye mt-2 me-2"></i>
                         </a>
 
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#delete-modal-{{ $order->id }}">
-                            {{-- <i class="fa-solid fa-trash"></i> --}}
-                            Sposta nel cestino
-                        </button>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $order->id }}">
+                            <i class=" btn-order fa-solid fa-trash-can mt-2"></i>
+                        </a>
                         @foreach ($orders as $order)
                             <!-- Modal -->
                             <div class="modal fade" id="delete-modal-{{ $order->id }}" tabindex="-1"

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a class="btn btn-primary my-3" href="{{ route('admin.orders.index') }}">Torna alla lista</a>
+    <a class="btn-violet ms-4 my-5" href="{{ route('admin.orders.index') }}">Torna alla lista</a>
     <h1 class="text-center mt-4">Dettagli ordine n° {{ $order->id }}</h1>
     <div class="row">
         <div class="card col-6 offset-3 card-order">

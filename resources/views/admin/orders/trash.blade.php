@@ -1,52 +1,52 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="my-4">Cestino ordini</h1>
-    <table class="table table-striped mt-5">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Indirizzo</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Stato</th>
-                <th scope="col">Totale</th>
-                <th scope="col">Actions</th>
+    <div class="container">
+        <h1 class="my-4 text-primary">Cestino ordini</h1>
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cognome</th>
+                    <th scope="col">Indirizzo</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Stato</th>
+                    <th scope="col">Totale</th>
+                    <th scope="col">Actions</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($orders as $order)
-                <tr>
-                    <th scope="row">{{ $order->id }}</th>
-                    <td>{{ $order->name }}</td>
-                    <td>{{ $order->surname }}</td>
-                    <td>{{ $order->address }}</td>
-                    <td>{{ $order->telephone }}</td>
-                    <td>{{ $order->status }}</td>
-                    <td>€{{ $order->total }}</td>
-                    <td class="d-flex">
-
-                        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal"
-                            data-bs-target="#restore-modal-{{ $order->id }}">
-                            {{-- <i class="fa-solid fa-rotate-right"></i> --}}
-                            Ripristina
-                        </button>
-
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#delete-modal-{{ $order->id }}">
-                            {{-- <i class="fa-solid fa-trash"></i> --}}
-                            Elimina
-                        </button>
-
-
-                    </td>
                 </tr>
-            @endforeach
+            </thead>
+            <tbody>
+                @foreach ($orders as $order)
+                    <tr>
+                        <th scope="row">{{ $order->id }}</th>
+                        <td>{{ $order->name }}</td>
+                        <td>{{ $order->surname }}</td>
+                        <td>{{ $order->address }}</td>
+                        <td>{{ $order->telephone }}</td>
+                        <td>{{ $order->status }}</td>
+                        <td>€{{ $order->total }}</td>
+                        <td class="d-flex">
 
-        </tbody>
-    </table>
+                            <a class="ms-3 text-success" data-bs-toggle="modal"
+                                data-bs-target="#restore-modal-{{ $order->id }}">
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            </a>
+
+                            <a class="ms-3 text-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete-modal-{{ $order->id }}">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+
+
+                        </td>
+                    </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+    </div>
 
     {{ $orders->links('pagination::bootstrap-5') }}
 
