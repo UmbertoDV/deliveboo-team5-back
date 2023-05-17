@@ -149,6 +149,7 @@
             </div>
         </main>
     </div>
+    @stack('js')
 </body>
 
 </html>

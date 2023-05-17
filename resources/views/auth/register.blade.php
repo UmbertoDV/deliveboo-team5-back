@@ -8,17 +8,17 @@
                     <div class="card-header">{{ __('Registrazione') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
                             @csrf
                             {{-- NOME --}}
                             <div class="mb-4 row">
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" autocomplete="name" autofocus>
-
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="name-error">
+                                    </span>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -35,7 +35,9 @@
                                     <input id="surname" type="text"
                                         class="form-control @error('surname') is-invalid @enderror" name="surname"
                                         value="{{ old('surname') }}" autocomplete="surname" autofocus>
-
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="surname-error">
+                                    </span>
                                     @error('surname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -52,7 +54,9 @@
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" autocomplete="email">
-
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="email-error">
+                                    </span>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -69,7 +73,9 @@
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         autocomplete="new-password">
-
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="password-error">
+                                    </span>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -85,6 +91,9 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" autocomplete="new-password">
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="password-confirm-error">
+                                    </span>
                                 </div>
                             </div>
                             {{-- NOME ATTIVITà --}}
@@ -97,7 +106,9 @@
                                         class="form-control @error('name_restaurant') is-invalid @enderror"
                                         name="name_restaurant" value="{{ old('name_restaurant') }}"
                                         autocomplete="name_restaurant" autofocus>
-
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="name-activity-error">
+                                    </span>
                                     @error('name_restaurant')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -114,7 +125,9 @@
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
                                         value="{{ old('address') }}" autocomplete="address" autofocus>
-
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="address-error">
+                                    </span>
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -132,7 +145,9 @@
                                     <input id="telephone" type="text"
                                         class="form-control @error('telephone') is-invalid @enderror" name="telephone"
                                         value="{{ old('telephone') }}" autocomplete="telephone" autofocus>
-
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="telephone-error">
+                                    </span>
                                     @error('telephone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -161,16 +176,14 @@
                             {{-- P.IVA --}}
                             <div>
                                 <div class="">
-                                    <label for="type" class="form-label">
-                                        P.iva
-                                    </label>
-                                    <input type="number" name="p_iva" id="p_iva"
-                                        class="@error('p_iva') is-invalid @enderror form-control"
-                                        value="{{ old('p_iva') }}">
-
+                                    <label for="type" class="form-label">P.iva </label>
+                                    <input type="number" name="p_iva" id="p_iva" class="@error('p_iva') is-invalid @enderror form-control" value="{{ old('p_iva') }}">
+                                    {{-- Controllo Client Side --}}
+                                    <span class="fw-bold text-danger tiny-text" id="p_iva-error">
+                                    </span>
                                     @error('p_iva')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
+                                        <div class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
                                         </div>
                                     @enderror
                                 </div>
@@ -225,3 +238,6 @@
         </div>
     </div>
 @endsection
+@push('js')
+<script src="{{ asset('js/validation.js') }}" ></script>
+@endpush
