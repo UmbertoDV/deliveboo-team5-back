@@ -71,7 +71,7 @@ jQuery('#register-form').validate({
         password_confirmation: {
             required: 'La password è obbligatoria <i class="bi bi-exclamation-circle"></i>',
             rangelength: 'La password deve avere almeno 8 caratteri <i class="bi bi-exclamation-circle"></i>',
-            equalTo: 'Le password non corrispondono, STRONZO <i class="bi bi-exclamation-circle"></i>',
+            equalTo: 'Le password non corrispondono <i class="bi bi-exclamation-circle"></i>',
         },
         name_restaurant: {
             required: 'Il nome dell\'attività è obbligatorio <i class="bi bi-exclamation-circle"></i>',
