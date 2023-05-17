@@ -94,6 +94,18 @@ td {
 }
 
 // SHOW DISHES
+.jumbo {
+    width: 100%;
+    height: 300px;
+    // background: #bc48ff;
+    // background: -webkit-radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+    // background: radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
 
 .form-dish-bg {
     // background: #bc48ff;
@@ -105,9 +117,18 @@ td {
     display: flex;
     justify-content: center;
 
-
     .form-contain-dish {
         position: absolute;
+        top: 300px;
+
+    }
+
+    .dish-home {
+        border: 1px solid white;
+        border-radius: 2rem;
+        padding: 2rem 0rem;
+        margin: 1rem 0rem;
+
     }
 
     .reg-card {
@@ -116,6 +137,15 @@ td {
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.125);
         border-radius: 1rem;
+    }
+
+    .ms-home {
+        margin-left: 3.6rem;
+
+        a,
+        i {
+            font-size: 1rem;
+        }
     }
 }
 
@@ -274,4 +304,43 @@ td {
 i {
     text-decoration: none;
     cursor: pointer;
+}
+
+.card-text {
+    height: 80px;
+}
+
+.show-card-dish {
+    img {
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+.home-cards {
+    padding: 0px;
+}
+
+// WELCOMEPAGE
+
+.show-card-dish {
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 1rem;
+
+    .icon-show-dish a,
+    i {
+        color: #2f1be3;
+        font-size: 1rem;
+
+    }
+}
+
+// TRASH
+
+.trash-icons a {
+    text-decoration: none;
+
 }

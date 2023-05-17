@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-{{ session('message_type') ? session('message_type') : 'alert' }}">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="container mt-4 mb-3">
         <a class="btn btn-primary" href="{{ route('admin.dishes.index') }}"><i
                 class="fa-solid fa-circle-left  text-white me-2"></i>Torna ai piatti</a>
@@ -86,7 +91,7 @@
                     <tr>
                         <th scope="row">{{ $dish->id }}</th>
                         <td>
-                            <div class="image-prev-index border p-2 d-flex align-items-center">
+                            <div class="image-prev-index p-2 d-flex align-items-center">
                                 <img src="{{ $dish->getImageUri() }}" alt="{{ $dish->name }}" id="image-prev-i">
                             </div>
                         </td>
@@ -96,15 +101,17 @@
                         <td class="col">{{ $dish->description }}</td>
                         <td>{{ $dish->created_at }}</td>
                         <td>{{ $dish->updated_at }}</td>
-                        <td class="text-center">
-                            <a class="ms-3 text-danger" data-bs-toggle="modal"
-                                data-bs-target="#delete-modal-{{ $dish->id }}" title="Elimina il prodotto"><i
-                                    class="fa-solid fa-trash"></i>
-                            </a>
-                            <a class="ms-3 text-success" data-bs-toggle="modal"
-                                data-bs-target="#restore-modal-{{ $dish->id }}" title="Ripristina il prodotto"> <i
-                                    class="fa-solid fa-arrow-up-from-bracket"></i>
-                            </a>
+                        <td class="text-center trash-icons ">
+                            <div class="d-flex gap-4 fs-5">
+                                <a class="text-danger" data-bs-toggle="modal"
+                                    data-bs-target="#delete-modal-{{ $dish->id }}" title="Elimina il prodotto"><i
+                                        class="fa-solid fa-trash"></i>
+                                </a>
+                                <a class="text-success" data-bs-toggle="modal"
+                                    data-bs-target="#restore-modal-{{ $dish->id }}" title="Ripristina il prodotto"> <i
+                                        class="fa-solid fa-arrow-up-from-bracket"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
 

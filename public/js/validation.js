@@ -46,25 +46,25 @@ jQuery('#register-form').validate({
             rangelength: [11, 11],
         },
     },
-    messages:{
-        name:{
+    messages: {
+        name: {
             required: 'Il nome è obbligatorio <i class="bi bi-exclamation-circle"></i>',
             maxlength: 'Il nome non può superare i 255 caratteri <i class="bi bi-exclamation-circle"></i>',
             lettersonly: 'Il nome non può contenere numeri <i class="bi bi-exclamation-circle"></i>',
             specialcharacter: 'Il nome non può contenere caratteri speciali <i class="bi bi-exclamation-circle"></i>',
         },
-        surname:{
+        surname: {
             required: 'Il cognome è obbligatorio <i class="bi bi-exclamation-circle"></i>',
             maxlength: 'Il cognome non può superare i 255 caratteri <i class="bi bi-exclamation-circle"></i>',
             lettersonly: 'Il cognome non può contenere numeri <i class="bi bi-exclamation-circle"></i>',
             specialcharacter: 'Il cognome non può contenere caratteri speciali <i class="bi bi-exclamation-circle"></i>',
         },
-        email:{
+        email: {
             required: 'L\'email è obbligatoria <i class="bi bi-exclamation-circle"></i>',
             maxlength: 'L\'email non può superare i 255 caratteri <i class="bi bi-exclamation-circle"></i>',
             email: 'Il formato della mail non è valido <i class="bi bi-exclamation-circle"></i>',
         },
-        password:{
+        password: {
             required: 'La password è obbligatoria <i class="bi bi-exclamation-circle"></i>',
             rangelength: 'La password deve avere almeno 8 caratteri <i class="bi bi-exclamation-circle"></i>',
         },
@@ -95,27 +95,27 @@ jQuery('#register-form').validate({
     errorClass: "fw-bold text-danger tiny-text"
 });
 
-jQuery.validator.addMethod("lettersonly", function(value, element) {
+jQuery.validator.addMethod("lettersonly", function (value, element) {
 
     var regNew = new RegExp(/^([^0-9]*)$/);
-    if(!regNew.test(value)){
+    if (!regNew.test(value)) {
         return false;
     } else {
         return true;
     }
-}); 
+});
 
-jQuery.validator.addMethod("numbersonly", function(value, element) {
+jQuery.validator.addMethod("numbersonly", function (value, element) {
 
     var regNew = new RegExp(/^([^0-9]*)$/);
-    if(regNew.test(value)){
+    if (regNew.test(value)) {
         return false;
     } else {
         return true;
     }
-}); 
+});
 
-jQuery.validator.addMethod("specialcharacter", function(value, element) {
+jQuery.validator.addMethod("specialcharacter", function (value, element) {
 
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     let contain_special_char = specialChars.test(value);

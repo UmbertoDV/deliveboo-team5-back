@@ -91,9 +91,9 @@ class DishController extends Controller
 
         if (Arr::exists($data, 'types')) $dish->types()->attach($data['types']);
 
-        return to_route('admin.dishes.show', $dish)
+        return to_route('admin.dishes.index', $dish)
             ->with('message_type', "success")
-            ->with('message-content', "Il piatto con $dish->name è stato creato con successo!");
+            ->with('message', "Il piatto '$dish->name' è stato creato con successo!");
     }
 
     /**
@@ -108,18 +108,17 @@ class DishController extends Controller
         // ROTTA SHOW!
         $rest = null;
         $id_user = Auth::user()->id;
-        $restaurant_logged_user = Restaurant::where('user_id','=', $id_user)->get();
+        $restaurant_logged_user = Restaurant::where('user_id', '=', $id_user)->get();
         $id_ristorante_del_piatto = $dish->restaurant_id;
 
-        foreach ($restaurant_logged_user as $rest){
+        foreach ($restaurant_logged_user as $rest) {
             $rest = $rest->id;
         }
-        if ($id_ristorante_del_piatto != $rest){
+        if ($id_ristorante_del_piatto != $rest) {
             return redirect()->action([DishController::class, 'index']);
         } else {
             return view('admin.dishes.show', compact('dish', 'types'));
         }
-        
     }
 
     /**
@@ -134,13 +133,13 @@ class DishController extends Controller
 
         $rest = null;
         $id_user = Auth::user()->id;
-        $restaurant_logged_user = Restaurant::where('user_id','=', $id_user)->get();
+        $restaurant_logged_user = Restaurant::where('user_id', '=', $id_user)->get();
         $id_ristorante_del_piatto = $dish->restaurant_id;
 
-        foreach ($restaurant_logged_user as $rest){
+        foreach ($restaurant_logged_user as $rest) {
             $rest = $rest->id;
         }
-        if ($id_ristorante_del_piatto != $rest){
+        if ($id_ristorante_del_piatto != $rest) {
             return redirect()->action([DishController::class, 'index']);
         } else {
             return view('admin.dishes.form', compact('dish', 'types'));
@@ -172,7 +171,7 @@ class DishController extends Controller
 
         return to_route('admin.dishes.show', $dish)
             ->with('message_type', "success")
-            ->with('message-content', "Il piatto con ID: $dish->title è stato modificato con successo!");
+            ->with('message', "Il piatto con ID: $dish->id è stato modificato con successo!");
     }
 
     /**
@@ -188,7 +187,7 @@ class DishController extends Controller
         $dish->delete();
         return to_route('admin.dishes.index')
             ->with('message_type', "danger")
-            ->with('message-content', "Il piatto con $id_dish spostato nel cestino!");
+            ->with('message', "Il piatto con $id_dish è stato spostato nel cestino!");
     }
 
 
@@ -200,7 +199,7 @@ class DishController extends Controller
             [
                 'name' => 'required|string|max:80',
                 'description' => 'string',
-                'price' => 'numeric|between:0,99.99',
+                'price' => 'numeric|between:0.5,99.99',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg',
                 'visibility' => 'boolean'
             ],
@@ -212,7 +211,7 @@ class DishController extends Controller
                 'description.string' => 'La descrizione deve essere una stringa',
 
                 'price.numeric' => 'Il prezzo deve essere un numero',
-                'price.between' => 'Il numero deve essere compreso tra 0 e 99,99',
+                'price.between' => 'Il prezzo deve essere compreso tra 0,5 e 99,99',
 
                 'image.image' => 'Perfavore inserisci un file',
                 'image.mimes' => 'I formati accettati sono: jpg, png o jpeg',
@@ -247,7 +246,7 @@ class DishController extends Controller
 
         return to_route('admin.dishes.trash')
             ->with('message_type', "danger")
-            ->with('message-content', "Il piatto con ID: $id_message è stato eliminato definitivamente!");;
+            ->with('message', "Il piatto con ID: $id_message è stato eliminato definitivamente!");
     }
 
     public function restore(Int $id)
@@ -258,6 +257,6 @@ class DishController extends Controller
         $id_dish->restore();
         return to_route('admin.dishes.index')
             ->with('message_type', "success")
-            ->with('message-content', "Il piatto con ID: $id_message è stato ripristinato correttamente!");;
+            ->with('message-content', "Il piatto con ID: $id_message è stato ripristinato correttamente!");
     }
 }
