@@ -24,8 +24,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
+        $restaurant = new Restaurant;
         $types = Type::all();
-        return view('auth.register', compact('types'));
+        return view('auth.register', compact('types', 'restaurant'));
     }
 
     /**

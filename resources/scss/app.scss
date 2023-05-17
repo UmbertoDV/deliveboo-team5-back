@@ -25,11 +25,16 @@ td {
 
 .navbar {
 
-    background-color: #5d4df5;
+    // background-color: #5d4df5;
+    background-color: #E9511D;
 
     .nav-item>a {
         color: white;
     }
+}
+
+.nav-bg {
+    background-color: #5d4df5;
 }
 
 #Deliveboo {
@@ -88,10 +93,54 @@ td {
     }
 }
 
-// 
+// SHOW DISHES
+
+.form-dish-bg {
+    background: #bc48ff;
+    background: -webkit-radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+    background: radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+    height: 100vh;
+
+    .reg-card {
+        background: rgba(255, 255, 255, 0.25);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.125);
+        border-radius: 1rem;
+    }
+}
+
+.card-dish {
+    // background: rgba(255, 255, 255, 0.25);
+    // -webkit-backdrop-filter: blur(10px);
+    // backdrop-filter: blur(10px);
+    // border: 3px solid rgba(255, 255, 255, 0.125);
+    // border-bottom-left-radius: 1rem;
+    // border-bottom-right-radius: 1rem;
+
+    form {
+        border-radius: 1rem;
+
+    }
+
+    input,
+    textarea {
+        background: rgba(255, 255, 255, 0.25);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.125);
+    }
+
+    textarea {
+        height: 200px;
+    }
+}
+
+
 .right-side-dish,
 .show-right-dish {
-    width: 40%;
+    flex-basis: 100%;
+
 
     img {
         max-width: 100%;
@@ -133,12 +182,21 @@ td {
 }
 
 .btn-form-dish {
-    background-color: #5d4df5;
+    background: #474bff;
+    background: -webkit-linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+    background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+    color: white;
+    border-radius: 0.8rem;
+    padding: 0.8rem 1rem;
+    border: none;
     padding: 0.5rem 0.9rem;
 
     &:hover {
         color: white;
-        background-color: #2f1be3;
+        background: #e9511d;
+        background: -webkit-linear-gradient(0deg, #e9511d 0%, #bc48ff 100%);
+        background: linear-gradient(0deg, #e9511d 0%, #bc48ff 100%);
+        cursor: pointer;
     }
 }
 

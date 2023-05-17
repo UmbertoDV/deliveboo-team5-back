@@ -38,7 +38,7 @@ Route::middleware('auth')
         Route::put('/types/{type}/restore', [TypeController::class, 'restore'])->name('types.restore');
         Route::delete('/types/{type}/force-delete', [TypeController::class, 'forceDelete'])->name('types.force-delete');
 
-        Route::resource('restaurants', RestaurantController::class);
+        Route::resource('restaurants', RestaurantController::class)->except('create');
 
         Route::get('dishes/trash', [DishController::class, 'trash'])->name('dishes.trash');
         Route::put('dishes/{dish}/restore', [DishController::class, 'restore'])->name('dishes.restore');

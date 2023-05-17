@@ -7,10 +7,8 @@
             <div class="mt-5 mb-4">
                 {{-- Se stai modificando i progetti pubblicati torna li alla fine della modifica --}}
 
-
                 <a class="mt-5 mb-3" href="{{ route('admin.dishes.index') }}"> Torna
                     Indietro</a>
-
             </div>
 
             <div class="card show-card-dish" style="width: 18rem;">
