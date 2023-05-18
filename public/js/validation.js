@@ -1,4 +1,6 @@
 jQuery('#register-form').validate({
+    errorClass: "fw-bold text-danger tiny-text error-span",
+    errorElement: 'span',
     rules:
     {
         name: {
@@ -45,7 +47,7 @@ jQuery('#register-form').validate({
             digits: true,
             rangelength: [11, 11],
         },
-        types: {
+        'types[]': {
             required: true,
         },
     },
@@ -94,12 +96,10 @@ jQuery('#register-form').validate({
             digits: 'La P.IVA non può contenere lettere <i class="bi bi-exclamation-circle"></i>',
             rangelength: 'La P.IVA deve essere di 11 cifre <i class="bi bi-exclamation-circle"></i>',
         },
-        types: {
+        'types[]': {
             required: 'La tipologia è obbligatoria <i class="bi bi-exclamation-circle"></i>',
-
         }
     },
-    errorClass: "fw-bold text-danger tiny-text"
 });
 
 jQuery.validator.addMethod("lettersonly", function (value, element) {
