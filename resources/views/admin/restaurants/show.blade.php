@@ -35,7 +35,7 @@
                             -
                         @endforelse
                     </div>
-                    <div><strong>Ristorante: </strong> {{ $restaurant->_name_restaurant }} </div>
+                    <div><strong>Ristorante: </strong> {{ $restaurant->name_restaurant }} </div>
                     <div><strong>Indirizzo: </strong> {{ $restaurant->address }} </div>
                     <div> <strong>Telefono: </strong> {{ $restaurant->telephone }} </div>
                     <div><strong>Descrizione: </strong> {{ $restaurant->description }}</div>
