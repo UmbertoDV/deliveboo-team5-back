@@ -22,7 +22,7 @@ class RestaurantController extends Controller
             $restaurant->image = $restaurant->getImageUri();
         }
 
-        return response()->json($restaurants);
+        return response()->json(compact('restaurants'));
     }
 
     /**
