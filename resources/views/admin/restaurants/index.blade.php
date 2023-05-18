@@ -19,10 +19,6 @@
                 <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-primary my-3 mb-4"> <i
                         class="fa-solid fa-pen mt-2 me-2"> </i>Modifica</a>
 
-                <a class="btn btn-primary my-3 mb-4" type="button" data-bs-toggle="modal"
-                    data-bs-target="#delete-modal-{{ $restaurant->id }}">
-                    <i class="fa-solid fa-trash-can mt-2"></i> Elimina
-                </a>
 
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary my-3 mb-4"> <i
                         class="fa-solid fa-bars mt-2 me-2"></i> </i>Menù</a>
@@ -51,37 +47,6 @@
         @endif
     </div>
     {{-- MODALE --}}
-
-    <!-- Modal -->
-
-
-    <div class="modal fade" id="delete-modal-{{ $restaurant->id }}" tabindex="-1" data-bs-backdrop="static"
-        aria-labelledby="delete-modal-{{ $restaurant->id }}-label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="delete-modal-{{ $restaurant->id }}-label">Conferma eliminazione
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-start">
-                    Sei sicuro di voler spostare nel cestino il ristorante: <strong>{{ $restaurant->name }}</strong>
-                    con ID
-                    <strong> {{ $restaurant->id }}</strong>? <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-
-                    <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST" class="">
-                        @method('DELETE')
-                        @csrf
-
-                        <button type="submit" class="btn btn-danger">Elimina</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 @endsection

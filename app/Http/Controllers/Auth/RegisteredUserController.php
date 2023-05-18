@@ -47,9 +47,9 @@ class RegisteredUserController extends Controller
                 'name_restaurant' => 'required|string|max:255',
                 'address' => 'required|string|max:100',
                 'telephone' => 'required|string|max:16',
-                'description' => 'string',
+                'description' => 'nullable',
                 'p_iva' => 'required|string|max:11|min:11',
-                'types' => 'nullable|exists:types,id',
+                'types' => 'required|exists:types,id',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg'
             ],
             [
@@ -81,14 +81,15 @@ class RegisteredUserController extends Controller
                 'telephone.string' => 'Il numero del ristorante deve essere una stringa',
                 'telephone.max' => 'Il numero del ristorante deve avere massimo 15 caratteri',
 
-                'description.string' => 'La descrizone del ristorante deve essere una stringa',
+                'types.required' => "La tipologia è obbligatoria",
 
                 'p_iva.required' => "La partita iva è obbligatoria",
                 'p_iva.string' => "La partita iva deve essere una stringa",
                 'p_iva.max' => "La partita iva deve avere 11 caratteri",
                 'p_iva.min' => "La partita iva deve avere 11 caratteri",
 
-                'type_id.exists' => "L'id non è valido",
+                'types.exists' => "L'id non è valido",
+                'types.required' => "Devi inserire almeno una tipologia!",
 
                 'image.image' => "Inserisci un file, per favore",
                 'image.mimes' => "I formati consentiti sono: jpg, png o jpeg"

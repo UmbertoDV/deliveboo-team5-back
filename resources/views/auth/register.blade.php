@@ -21,9 +21,6 @@
                                             <input id="name" type="text"
                                                 class="form-control @error('name') is-invalid @enderror" name="name"
                                                 value="{{ old('name') }}" autocomplete="name" autofocus>
-                                            {{-- Controllo Client Side --}}
-                                            <span class="fw-bold text-danger tiny-text" id="name-error">
-                                            </span>
 
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -41,9 +38,7 @@
                                             <input id="surname" type="text"
                                                 class="form-control @error('surname') is-invalid @enderror" name="surname"
                                                 value="{{ old('surname') }}" autocomplete="surname" autofocus>
-                                            {{-- Controllo Client Side --}}
-                                            <span class="fw-bold text-danger tiny-text" id="surname-error">
-                                            </span>
+
                                             @error('surname')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -213,11 +208,11 @@
                                                             @if (in_array($type->id, old('type', $restaurant_type ?? []))) checked @endif>
                                                     </div>
                                                 @endforeach
-                                                {{-- @error('types')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror --}}
+                                                @error('types[]')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

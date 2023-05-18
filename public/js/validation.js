@@ -45,6 +45,9 @@ jQuery('#register-form').validate({
             digits: true,
             rangelength: [11, 11],
         },
+        types: {
+            required: true,
+        },
     },
     messages: {
         name: {
@@ -90,6 +93,10 @@ jQuery('#register-form').validate({
             required: 'La P.IVA è obbligatoria <i class="bi bi-exclamation-circle"></i>',
             digits: 'La P.IVA non può contenere lettere <i class="bi bi-exclamation-circle"></i>',
             rangelength: 'La P.IVA deve essere di 11 cifre <i class="bi bi-exclamation-circle"></i>',
+        },
+        types: {
+            required: 'La tipologia è obbligatoria <i class="bi bi-exclamation-circle"></i>',
+
         }
     },
     errorClass: "fw-bold text-danger tiny-text"
