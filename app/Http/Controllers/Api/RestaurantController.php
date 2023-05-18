@@ -44,7 +44,20 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        //
+        $restaurant = Restaurant::where('id', $id)
+            ->first();
+
+        if ($restaurant->image)
+            $restaurant->image = url('storage/' . $restaurant->image);
+
+
+        else
+            $restaurant->image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png';
+
+        // se l'id del post non esiste ritorna un'errore 404
+        if (!$restaurant) return response(null, 404);
+
+        return response()->json($restaurant);
     }
 
     /**
