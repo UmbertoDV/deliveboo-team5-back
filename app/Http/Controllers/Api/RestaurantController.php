@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Models\Dish;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -81,5 +82,14 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function types()
+    {
+        $types = Type::all();
+        return response()->json([
+            'success' => true,
+            'types' => $types,
+        ]);
     }
 }
