@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Restaurant;
-use App\Models\Dish;
 use Illuminate\Http\Request;
+use App\Models\Dish;
 
-class RestaurantController extends Controller
+class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,13 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::paginate(8);
-        foreach ($restaurants as $restaurant) {
-            $restaurant->description = $restaurant->getAbstract();
-            $restaurant->image = $restaurant->getImageUri();
-        }
+        $dishes = Dish::paginate(8);
+        foreach ($dishes as $dish) {
+            $dish->description = $dish->getAbstract();
+            $dish->image = $dish->getImageUri();
 
-        return response()->json($restaurants);
+            return response()->json($dishes);
+        }
     }
 
     /**

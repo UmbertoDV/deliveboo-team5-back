@@ -40,7 +40,7 @@ class Dish extends Model
     public function getImageUri()
     {
         // dd($this->image);
-        return $this->image ? asset('storage/' . $this->image) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png';
+        return $this->image ? asset('storage/' . $this->image) : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
     }
 
     protected function getPriceAttribute($value)
