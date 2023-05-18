@@ -45,7 +45,7 @@
                         <div class="show-card-dish" style="width: 18rem;">
                             <img src="{{ $dish->getImageUri() }}" alt="{{ $dish->name }}" class="pt-3">
                             <div class="card-body card-dish">
-                                <h5 class="card-title">{{ $dish->name }}</h5>
+                                <h5 class="card-title mt-3">{{ $dish->name }}</h5>
                                 <p class="card-text">{{ $dish->description }}</p>
                                 <span>{{ $dish->price }}€</span>
                                 <div class="icon-show-dish">
