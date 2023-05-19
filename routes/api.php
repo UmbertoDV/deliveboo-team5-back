@@ -23,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('restaurants', RestaurantController::class)->except('store', 'update', 'destroy');
 Route::get('/restaurants/{type_id}/type', [RestaurantController::class, 'getRestaurantByType']);
 // Route::apiResource('dishes', DishController::class);
+
+Route::get('types', [RestaurantController::class, 'types']);
