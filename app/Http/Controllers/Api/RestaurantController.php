@@ -72,6 +72,8 @@ class RestaurantController extends Controller
 
         return response()->json(compact('restaurants', 'type'));
     }
+
+
     public function types()
     {
         $types = Type::all();
