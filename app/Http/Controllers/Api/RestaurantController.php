@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Models\Dish;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -25,16 +26,6 @@ class RestaurantController extends Controller
         return response()->json($restaurants);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -61,25 +52,24 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function getRestaurantByType($type_Id)
     {
-        //
-    }
+        $restaurants = Restaurant::whereHas('types', function ($query) use ($type_Id) {
+            $query->where('type_id', $type_Id);
+        })->get();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        foreach ($restaurants as $restaurant) {
+            $restaurant->description = $restaurant->getAbstract();
+            $restaurant->image = $restaurant->getImageUri();
+        }
+
+        $type = Type::find($type_Id);
+
+        return response()->json(compact('restaurants', 'type'));
     }
 }

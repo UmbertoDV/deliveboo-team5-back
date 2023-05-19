@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('restaurants', RestaurantController::class);
-
-Route::apiResource('dishes', DishController::class);
+Route::apiResource('restaurants', RestaurantController::class)->except('store', 'update', 'destroy');
+Route::get('/restaurants/{type_id}/type', [RestaurantController::class, 'getRestaurantByType']);
+// Route::apiResource('dishes', DishController::class);
