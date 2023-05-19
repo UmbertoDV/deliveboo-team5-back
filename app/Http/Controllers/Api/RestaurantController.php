@@ -57,10 +57,10 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getRestaurantByType($type_Id)
+    public function getRestaurantByType($type_id)
     {
-        $restaurants = Restaurant::whereHas('types', function ($query) use ($type_Id) {
-            $query->where('type_id', $type_Id);
+        $restaurants = Restaurant::whereHas('types', function ($query) use ($type_id) {
+            $query->where('type_id', $type_id)->orderBy('updated_at', 'DESC');
         })->get();
 
         foreach ($restaurants as $restaurant) {
@@ -68,9 +68,9 @@ class RestaurantController extends Controller
             $restaurant->image = $restaurant->getImageUri();
         }
 
-        $type = Type::find($type_Id);
+        $type = Type::find($type_id);
 
-        return response()->json(compact('restaurants', 'type'));
+        return response()->json($restaurants);
     }
 
 
