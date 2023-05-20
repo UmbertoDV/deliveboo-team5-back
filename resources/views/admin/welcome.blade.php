@@ -6,7 +6,6 @@
 
         <div class="jumbo d-flex">
             <div class="d-flex">
-                <div></div>
                 <img src="{{ $restaurant->getImageUri() }}" class="" alt="...">
                 <div class="ms-5 mt-5 d-flex flex-column gap-2">
                     <div>
