@@ -19,7 +19,7 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::get();
         foreach ($restaurants as $restaurant) {
-            $restaurant->description = $restaurant->getAbstract();
+            // $restaurant->description = $restaurant->getAbstract();
             $restaurant->image = $restaurant->getImageUri();
         }
 
