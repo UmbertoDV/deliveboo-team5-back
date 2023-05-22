@@ -29,4 +29,4 @@ Route::get('/type/{type_id}/restaurants', [RestaurantController::class, 'getRest
 
 Route::get('types', [RestaurantController::class, 'types']);
 
-Route::resource('orders', OrderController::class);
+Route::post('orders', [OrderController::class, 'store']);

@@ -30,22 +30,27 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $cart = $request->input('cart');
+        // Esegui le operazioni desiderate con i dati ricevuti
 
-        $data = request()->all();
         $order = new Order;
-        $restaurant = Restaurant::all()->where('id', '=', $data['cart'][0]['restaurant_id'])->first();
-        $restaurant->orders()->save($order);
-        $order->save();
-        foreach ($data['cart'] as $dish_info) {
-            $dish = Dish::all()->where('id', '=', $dish_info['id'])->first();
-            $order->dishes()->save($dish, ['quantity' => $dish_info['quantity']]);
-        }
+        $restaurant = Restaurant::where('id',  $cart['cart'][0]['restaurant_id'])->first();
+        return response()->json([$cart, $restaurant], 200);
+        // $data = $request->all();
 
-        $newOrder = Order::all()->where('id', '=', $order->id)->first();
+        // $restaurant = Restaurant::all();
+        // $restaurant->orders()->save($order);
+        // $order->save();
+        // foreach ($data['cart'] as $dish_info) {
+        //     $dish = Dish::all()->where('id', '=', $dish_info['id'])->first();
+        //     $order->dishes()->save($dish, ['quantity' => $dish_info['quantity']]);
+        // }
 
-        return response()->json(
-            [$newOrder, $restaurant]
-        );
+        // $newOrder = Order::all()->where('id', '=', $order->id)->first();
+
+        // return response()->json(
+        //     [$newOrder, $restaurant]
+        // );
     }
 
     /**
