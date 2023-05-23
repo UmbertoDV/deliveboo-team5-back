@@ -12,7 +12,7 @@ class Order extends Model
     protected $fillable = ['name', 'surname', 'email', 'address', 'telephone', 'note', 'total'];
     public function dishes()
     {
-        return $this->belongsToMany(Dish::class)
+        return $this->belongsToMany(Dish::class,  'dish_order')
             ->withPivot('quantity');
     }
 

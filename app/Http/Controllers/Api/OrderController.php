@@ -80,20 +80,20 @@ class OrderController extends Controller
         $order->save();
         $cart=$request->input('cart');
 
-        //  foreach ($cart as $dish) {
-        //     $dishId = $dish['dish_id']; 
-        //     $quantity = $dish['quantity']; 
-        //     $order->dishes()->attach($dishId, ['quantity' => $quantity]);
-        // }
+         foreach ($cart as $dish) {
+            $dishId = $dish['id']; 
+            $quantity = $dish['quantity']; 
+            $order->dishes()->attach($dishId, ['quantity' => $quantity]);
+        }
 
         // $order->load('dishes');
 
         // $order->fill($request->all());
-        // $order->save();
+        $order->save();
 
 
         // Restituisci i dati come parte della risposta JSON
-        return response()->json([$cart, 200]);
+        return response()->json([$cart]);
     }
 
     /**
