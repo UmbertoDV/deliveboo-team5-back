@@ -34,8 +34,8 @@ class OrderController extends Controller
         // Esegui le operazioni desiderate con i dati ricevuti
 
         $order = new Order;
-        $restaurant = Restaurant::where('id',  $cart['cart'][0]['restaurant_id'])->first();
-        return response()->json([$cart, $restaurant], 200);
+        // $restaurant = Restaurant::where('id',  $cart['cart'][0]['restaurant_id'])->first();
+        return response()->json([$cart], 200);
         // $data = $request->all();
 
         // $restaurant = Restaurant::all();
