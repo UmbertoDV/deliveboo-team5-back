@@ -6,6 +6,7 @@ use App\Models\Restaurant;
 use App\Models\Dish;
 use App\Models\Type;
 use App\Models\Order;
+use Illuminate\Support\Arr;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -74,15 +75,25 @@ class OrderController extends Controller
         $order->note = $note;
         $order->total = $total;
 
+    
+        
         $order->save();
-        // $order->save();
+        $cart=$request->input('cart');
+
+        //  foreach ($cart as $dish) {
+        //     $dishId = $dish['dish_id']; 
+        //     $quantity = $dish['quantity']; 
+        //     $order->dishes()->attach($dishId, ['quantity' => $quantity]);
+        // }
+
+        // $order->load('dishes');
 
         // $order->fill($request->all());
         // $order->save();
 
 
         // Restituisci i dati come parte della risposta JSON
-        return response()->json([$total]);
+        return response()->json([$cart, 200]);
     }
 
     /**
