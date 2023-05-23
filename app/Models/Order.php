@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'surname', 'email', 'address', 'telephone', 'note', 'status', 'total'];
+    protected $fillable = ['name', 'surname', 'email', 'address', 'telephone', 'note', 'total'];
     public function dishes()
     {
         return $this->belongsToMany(Dish::class)

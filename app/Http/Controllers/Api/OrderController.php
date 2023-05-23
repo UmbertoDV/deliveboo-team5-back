@@ -30,12 +30,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = $request->input('cart');
+        // dd($request);
+        // $cart = $request->input('cart');
+
         // Esegui le operazioni desiderate con i dati ricevuti
 
-        $order = new Order;
+        // $order = new Order;
         // $restaurant = Restaurant::where('id',  $cart['cart'][0]['restaurant_id'])->first();
-        return response()->json([$cart], 200);
+        // return response()->json([$cart], 200);
         // $data = $request->all();
 
         // $restaurant = Restaurant::all();
@@ -51,6 +53,36 @@ class OrderController extends Controller
         // return response()->json(
         //     [$newOrder, $restaurant]
         // );
+        $data = [$request->all()];
+
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+        $email = $request->input('email');
+        $address = $request->input('address');
+        $telephone = $request->input('telephone');
+        $note = $request->input('note');
+        $total = $request->input('total');
+
+
+        $order = new Order();
+
+        $order->name = $name;
+        $order->surname = $surname;
+        $order->email = $email;
+        $order->address = $address;
+        $order->telephone = $telephone;
+        $order->note = $note;
+        $order->total = $total;
+
+        $order->save();
+        // $order->save();
+
+        // $order->fill($request->all());
+        // $order->save();
+
+
+        // Restituisci i dati come parte della risposta JSON
+        return response()->json([$total]);
     }
 
     /**
