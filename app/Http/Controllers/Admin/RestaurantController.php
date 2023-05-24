@@ -29,7 +29,7 @@ class RestaurantController extends Controller
         $user = Auth::user();
         $restaurants = Restaurant::where('user_id', $user_id)->get();
         $restaurant = User::find($user_id)->restaurant;
-        // dd($restaurant);
+        // dump($restaurant);
 
         return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant', 'types', 'user'));
     }

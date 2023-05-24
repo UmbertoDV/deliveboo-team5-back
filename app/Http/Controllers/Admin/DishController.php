@@ -32,7 +32,7 @@ class DishController extends Controller
             //     $dishes->where('visibility', '=', $request->visibility);
             // }
             
-            $dishes = Dish::where('id', '>', 0);
+        $dishes = Dish::where('id', '>', 0);
         $user_id = $request->user()->id;
         $restaurant = User::find($user_id)->restaurant;
         // dd($restaurant);

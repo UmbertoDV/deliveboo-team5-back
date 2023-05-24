@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -14,10 +16,25 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { {
-            $orders = Order::paginate(8);
+    { 
+            $user_id = Auth::id();
+            $restaurant = User::find($user_id)->restaurant;
+
+            $restaurantId = $restaurant->id;
+
+            $orders = Order::whereIn('id', function ($query) use ($restaurantId) {
+                $query->select('order_id')
+                    ->from('dish_order')
+                    ->whereIn('dish_id', function ($subQuery) use ($restaurantId) {
+                        $subQuery->select('id')
+                            ->from('dishes')
+                            ->where('restaurant_id', $restaurantId);
+                    });
+            })->paginate(8);
+            dump($orders);
+            // $orders = Order::paginate(8);
             return view('admin.orders.index', compact('orders'));
-        }
+        
     }
 
     /**
@@ -83,7 +100,8 @@ class OrderController extends Controller
      */
     public function trash(Request $request)
     {
-        $orders = Order::onlyTrashed()->paginate(8)->withQueryString();
+        $orders = Order::onlyTrashed()->paginate(8);
+        $orders->appends($_GET);
         return view('admin.orders.trash', compact('orders'));
     }
 
