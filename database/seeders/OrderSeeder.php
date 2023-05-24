@@ -15,26 +15,26 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        $order = new Order;
-        $order->name = "Domenico";
-        $order->surname = "Lo Giudice";
-        $order->address = "Via del Casale di San Pio 3";
-        $order->email = "domenico@gmail.com";
-        $order->telephone = "+39 34056733367";
-        $order->note = "Doppio Bacon perfavore.";
-        $order->status = 'In arrivo';
-        $order->total = '200';
-        $order->save();
+        // $order = new Order;
+        // $order->name = "Domenico";
+        // $order->surname = "Lo Giudice";
+        // $order->address = "Via del Casale di San Pio 3";
+        // $order->email = "domenico@gmail.com";
+        // $order->telephone = "+39 34056733367";
+        // $order->note = "Doppio Bacon perfavore.";
+        // $order->status = 'In arrivo';
+        // $order->total = '200';
+        // $order->save();
 
-        $order = new Order;
-        $order->name = "Umberto";
-        $order->surname = "Di Vicino";
-        $order->address = "Via del Casale di San Marzio 3";
-        $order->email = "Umberto@gmail.com";
-        $order->telephone = "+39 34056733367";
-        $order->note = "Doppio Bacon perfavore.";
-        $order->status = 'In arrivo';
-        $order->total = '200';
-        $order->save();
+        // $order = new Order;
+        // $order->name = "Umberto";
+        // $order->surname = "Di Vicino";
+        // $order->address = "Via del Casale di San Marzio 3";
+        // $order->email = "Umberto@gmail.com";
+        // $order->telephone = "+39 34056733367";
+        // $order->note = "Doppio Bacon perfavore.";
+        // $order->status = 'In arrivo';
+        // $order->total = '200';
+        // $order->save();
     }
 }

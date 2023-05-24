@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Dish;
+use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,25 +18,24 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-            $user_id = Auth::id();
-            $restaurant = User::find($user_id)->restaurant;
+    {
+        $user_id = Auth::id();
+        $restaurant = User::find($user_id)->restaurant;
 
-            $restaurantId = $restaurant->id;
+        $restaurantId = $restaurant->id;
 
-            $orders = Order::whereIn('id', function ($query) use ($restaurantId) {
-                $query->select('order_id')
-                    ->from('dish_order')
-                    ->whereIn('dish_id', function ($subQuery) use ($restaurantId) {
-                        $subQuery->select('id')
-                            ->from('dishes')
-                            ->where('restaurant_id', $restaurantId);
-                    });
-            })->paginate(8);
-            // dump($orders);
-            // $orders = Order::paginate(8);
-            return view('admin.orders.index', compact('orders'));
-        
+        $orders = Order::whereIn('id', function ($query) use ($restaurantId) {
+            $query->select('order_id')
+                ->from('dish_order')
+                ->whereIn('dish_id', function ($subQuery) use ($restaurantId) {
+                    $subQuery->select('id')
+                        ->from('dishes')
+                        ->where('restaurant_id', $restaurantId);
+                });
+        })->paginate(8);
+        // dump($orders);
+        // $orders = Order::paginate(8);
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -66,7 +67,18 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('admin.orders.show', compact('order'));
+        // $orderId = $order->id;
+        $firstDish = $order->dishes()->first();
+        $restaurant_id = $firstDish->restaurant_id;
+        $id_user = Auth::user()->id;
+        // $restaurant = Restaurant::where('id', '=', $restaurant_id)->get();
+        $restaurant = Restaurant::where('id', '=', $restaurant_id)->first();
+        $user_id = $restaurant->user_id;
+        if ($id_user != $user_id) {
+            return redirect()->action([OrderController::class, 'index']);
+        } else {
+            return view('admin.orders.show', compact('order'));
+        }
     }
 
     /**
@@ -107,10 +119,13 @@ class OrderController extends Controller
 
     public function forceDelete(Int $id)
     {
-        $id_order = Order::where('id', $id)->onlyTrashed($id)->first();
-        $id_order->forceDelete();
+        $order = Order::withTrashed()->find($id);
 
-        return to_route('admin.orders.index');
+        if ($order) {
+            $order->forceDelete();
+        }
+
+        return redirect()->route('admin.orders.index');
     }
 
     public function restore(Int $id)

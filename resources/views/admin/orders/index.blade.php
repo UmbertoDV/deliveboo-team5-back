@@ -8,7 +8,6 @@
         <table class="table table-striped mt-5">
             <thead>
                 <tr class="table-primary">
-                    <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Cognome</th>
                     <th scope="col">Indirizzo</th>
@@ -22,7 +21,6 @@
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <th scope="row">{{ $order->id }}</th>
                         <td>{{ $order->name }}</td>
                         <td>{{ $order->surname }}</td>
                         <td>{{ $order->address }}</td>

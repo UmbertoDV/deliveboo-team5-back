@@ -69,7 +69,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
 
-                        <form action="{{ route('admin.orders.destroy', $order) }}" method="POST">
+                        <form action="{{ route('admin.orders.force-delete', $order) }}" method="POST">
                             @method('DELETE')
                             @csrf
 
