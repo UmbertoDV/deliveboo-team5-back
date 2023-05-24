@@ -31,7 +31,7 @@ class OrderController extends Controller
                             ->where('restaurant_id', $restaurantId);
                     });
             })->paginate(8);
-            dump($orders);
+            // dump($orders);
             // $orders = Order::paginate(8);
             return view('admin.orders.index', compact('orders'));
         
