@@ -7,6 +7,9 @@ use App\Models\Dish;
 use App\Models\Type;
 use App\Models\Order;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmationMail;
+use App\Mail\RestaurantNotificationMail;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -31,29 +34,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $cart = $request->input('cart');
-
-        // Esegui le operazioni desiderate con i dati ricevuti
-
-        // $order = new Order;
-        // $restaurant = Restaurant::where('id',  $cart['cart'][0]['restaurant_id'])->first();
-        // return response()->json([$cart], 200);
-        // $data = $request->all();
-
-        // $restaurant = Restaurant::all();
-        // $restaurant->orders()->save($order);
-        // $order->save();
-        // foreach ($data['cart'] as $dish_info) {
-        //     $dish = Dish::all()->where('id', '=', $dish_info['id'])->first();
-        //     $order->dishes()->save($dish, ['quantity' => $dish_info['quantity']]);
-        // }
-
-        // $newOrder = Order::all()->where('id', '=', $order->id)->first();
-
-        // return response()->json(
-        //     [$newOrder, $restaurant]
-        // );
+       
         $data = [$request->all()];
 
         $name = $request->input('name');
@@ -90,6 +71,12 @@ class OrderController extends Controller
 
         // $order->fill($request->all());
         $order->save();
+        // Invia l'email di conferma all'utente
+        Mail::to($email)->send(new OrderConfirmationMail($order));
+
+        // Invia l'email di notifica al ristoratore
+        $restaurantEmail = 'restaurant@example.com'; 
+        Mail::to($restaurantEmail)->send(new RestaurantNotificationMail($order));       
 
 
         // Restituisci i dati come parte della risposta JSON
