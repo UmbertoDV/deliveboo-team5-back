@@ -29,9 +29,9 @@ class RestaurantNotificationMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(Order $order)
     {
-        return $this->view('emails.restaurant-notification')
+        return $this->view('emails.restaurant-notification', compact('order'))
             ->subject('New Order Notification');
     }
 }
