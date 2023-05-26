@@ -10,6 +10,7 @@
 
 <body>
     <h1>Ordine confermato!</h1>
+    <h2>Presto saremo da te!</h2>
 </body>
 
 </html>
