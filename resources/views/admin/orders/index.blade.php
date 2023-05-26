@@ -13,6 +13,7 @@
                     <th scope="col">Indirizzo</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Stato</th>
+                    <th scope="col">Data Ordine</th>
                     <th scope="col">Totale</th>
                     <th scope="col">Actions</th>
 
@@ -26,6 +27,7 @@
                         <td>{{ $order->address }}</td>
                         <td>{{ $order->telephone }}</td>
                         <td>{{ $order->status }}</td>
+                        <td>{{ $order->created_at }}</td>
                         <td>€{{ $order->total }}</td>
                         <td class="d-flex">
                             <a href={{ route('admin.orders.show', $order) }}>
@@ -71,7 +73,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $orders->links('pagination::bootstrap-5') }}
     </div>
-
-    {{ $orders->links('pagination::bootstrap-5') }}
 @endsection
