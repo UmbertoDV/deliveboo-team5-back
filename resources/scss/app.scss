@@ -15,8 +15,7 @@
         border-radius: 20px;
     }
 
-    padding:0.5rem 0rem 0.5rem 0rem;
-
+    padding: 0.5rem 0rem 0.5rem 0rem;
 }
 
 td {
@@ -24,11 +23,10 @@ td {
 }
 
 .navbar {
-
     // background-color: #5d4df5;
-    background-color: #E9511D;
+    background-color: #e9511d;
 
-    .nav-item>a {
+    .nav-item > a {
         color: white;
     }
 }
@@ -39,13 +37,11 @@ td {
 
 #Deliveboo {
     width: 80px;
-
 }
 
 // DISHES
 .btn-violet {
-
-    background-color: #E9511D;
+    background-color: #e9511d;
     color: white;
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
@@ -54,18 +50,15 @@ td {
 
     &:hover {
         color: white;
-        background-color: #BF3100;
+        background-color: #bf3100;
     }
 }
 
 .dishes-icons {
     a {
-
         i {
-
             color: #5d4df5;
         }
-
     }
 }
 
@@ -97,14 +90,17 @@ td {
 .jumbo {
     width: 100%;
     height: 300px;
-    // background: #bc48ff;
-    // background: -webkit-radial-gradient(circle, #bc48ff 0%, #474bff 100%);
-    // background: radial-gradient(circle, #bc48ff 0%, #474bff 100%);
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+}
+.jumbo::-webkit-scrollbar {
+    display: none;
+}
 
-    img {
-        height: 100%;
-        object-fit: cover;
-    }
+img {
+    height: 100%;
+    object-fit: cover;
 }
 
 .form-dish-bg {
@@ -119,7 +115,6 @@ td {
 
     .form-contain-dish {
         position: absolute;
-
     }
 
     .dish-home {
@@ -128,7 +123,6 @@ td {
         padding: 2rem 0rem;
         margin: 1rem 0rem;
         top: 300px;
-
     }
 
     .reg-card {
@@ -159,7 +153,6 @@ td {
 
     form {
         border-radius: 1rem;
-
     }
 
     input,
@@ -175,11 +168,9 @@ td {
     }
 }
 
-
 .right-side-dish,
 .show-right-dish {
     flex-basis: 100%;
-
 
     img {
         max-width: 100%;
@@ -204,9 +195,9 @@ td {
     }
 }
 
-.show-dishes>div>a,
+.show-dishes > div > a,
 .btn-form-dish {
-    background-color: #E9511D;
+    background-color: #e9511d;
     color: white;
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
@@ -216,7 +207,7 @@ td {
 
     &:hover {
         color: white;
-        background-color: #BF3100;
+        background-color: #bf3100;
     }
 }
 
@@ -242,7 +233,7 @@ td {
 // ANIMATION
 .gradient {
     width: 100vw;
-    height: 100vh;
+    min-height: 1400px;
     background: linear-gradient(334deg, #6b97f7, #5d4df5, #f7137e);
     background-size: 180% 180%;
     animation: gradient-animation 6s ease infinite;
@@ -274,7 +265,7 @@ td {
 
 .homelogo-text {
     margin-bottom: 0px;
-    color: #FF4E00;
+    color: #ff4e00;
     font-size: 4rem;
 }
 
@@ -335,7 +326,6 @@ i {
     i {
         color: #2f1be3;
         font-size: 1rem;
-
     }
 }
 
@@ -343,5 +333,4 @@ i {
 
 .trash-icons a {
     text-decoration: none;
-
 }

@@ -7,7 +7,7 @@
         <div class="jumbo d-flex">
             <div class="d-flex">
                 <img src="{{ $restaurant->getImageUri() }}" class="" alt="...">
-                <div class="ms-5 mt-5 d-flex flex-column gap-2">
+                <div class="ms-5 mt-3 d-flex flex-column gap-2 me-5">
                     <div>
                         @forelse ($restaurant->types as $type)
                             <div class="badge rounded-pill" style="background-color: {{ $type?->color }}">

@@ -1,7 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 
 .show-restaurant {
-
     img {
         outline: 1px solid #5d4df5;
         outline-offset: 10px;
@@ -11,12 +10,12 @@
 }
 
 .rest-show a {
-    background-color: #E9511D;
+    background-color: #e9511d;
     border: none;
 
     &:hover {
         color: white;
-        background-color: #BF3100;
+        background-color: #bf3100;
     }
 }
 
@@ -47,4 +46,16 @@
     max-height: 500px;
     object-fit: cover;
     margin-bottom: 3rem;
+}
+
+.card-dish {
+    .card-text {
+        height: 100px;
+        overflow: auto;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+    }
+}
+.card-text::-webkit-scrollbar {
+    display: none;
 }
