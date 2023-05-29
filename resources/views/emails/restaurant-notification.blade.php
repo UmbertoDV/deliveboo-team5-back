@@ -17,6 +17,7 @@
     <h3>Telefono: {{ $order->telephone }}</h3>
     <h3>Note: {{ $order->note }}</h3>
     <h2>Tot. ordine: €{{ $order->total }}</h2>
+    <button><a href="http://127.0.0.1:8000/admin/orders">Vai all'ordine</a></button>
 </body>
 
 </html>

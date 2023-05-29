@@ -23,8 +23,8 @@
                 <h4>Riepilogo Ordine:</h4>
                 @foreach ($dishes as $dish)
                 <div class="d-flex flex-column border">
-                    <div class="mb-2 my-3 d-flex ms-2"><strong>Piatto</strong> <div>{{ $dish->name }}</div></div>
-                    <div class="mb-2 my-3 d-flex ms-2"><strong>Quantità</strong> <div>{{ $dish->pivot->quantity }}</div></div>
+                    <div class="mb-2 my-3 d-flex ms-2"><strong>Piatto: </strong> <div>{{ $dish->name }}</div></div>
+                    <div class="mb-2 my-3 d-flex ms-2"><strong>Quantità: </strong> <div>{{ $dish->pivot->quantity }}</div></div>
                 @endforeach
                 </div>
 

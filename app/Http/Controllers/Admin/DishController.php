@@ -169,7 +169,7 @@ class DishController extends Controller
         // $data['visibility'] = $request->has('visibility') ? 1 : 0;
         $dish->save();
 
-        return to_route('admin.dishes.show', $dish)
+        return to_route('admin.dishes.index', $dish)
             ->with('message_type', "success")
             ->with('message', "Il piatto con ID: $dish->id è stato modificato con successo!");
     }
