@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
     <div class="container rest-show mt-3">
@@ -12,7 +12,7 @@
 
 
         {{-- <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary my-3 mb-4"> Torna indietro</a> --}}
-        @if ($restaurant)
+        {{-- @if ($restaurant)
             <div class="d-flex gap-2">
                 <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-primary my-3 mb-4"> <i
                         class="fa-solid fa-pen mt-2 me-2"> </i>Modifica</a>
@@ -44,13 +44,13 @@
                 </div>
             </div>
         @endif
-    </div>
+    </div> --}}
     {{-- MODALE --}}
 
     <!-- Modal -->
 
 
-    <div class="modal fade" id="delete-modal-{{ $restaurant->id }}" tabindex="-1" data-bs-backdrop="static"
+    {{-- <div class="modal fade" id="delete-modal-{{ $restaurant->id }}" tabindex="-1" data-bs-backdrop="static"
         aria-labelledby="delete-modal-{{ $restaurant->id }}-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
-@endsection
+{{-- @endsection --}} 

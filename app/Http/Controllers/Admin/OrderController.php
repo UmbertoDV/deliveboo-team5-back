@@ -25,7 +25,7 @@ class OrderController extends Controller
         $restaurantId = $restaurant->id;
 
         $orders = Order::whereIn('id', function ($query) use ($restaurantId) {
-            $query->select('order_id')
+            $query->select('order_id',)
                 ->from('dish_order')
                 ->whereIn('dish_id', function ($subQuery) use ($restaurantId) {
                     $subQuery->select('id')
@@ -75,10 +75,12 @@ class OrderController extends Controller
         // $restaurant = Restaurant::where('id', '=', $restaurant_id)->get();
         $restaurant = Restaurant::where('id', '=', $restaurant_id)->first();
         $user_id = $restaurant->user_id;
+        $dishes= $order->dishes;
+        // dd($dishes);
         if ($id_user != $user_id) {
             return redirect()->action([OrderController::class, 'index']);
         } else {
-            return view('admin.orders.show', compact('order'));
+            return view('admin.orders.show', compact('order', 'dishes'));
         }
     }
 

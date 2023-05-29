@@ -109,7 +109,7 @@
                                             {{ $type->name }}
                                         </label>
                                         <input type="checkbox" name="types[]" id="type-{{ $type->id }}"
-                                            value="{{ $type->id }}" class="form-check-control me-3"
+                                            value="{{ $type->id }}" class="form-check-control me-2"
                                             @if (in_array($type->id, old('type', $restaurant_type ?? []))) checked @endif>
                                     @endforeach
                                     @error('types')

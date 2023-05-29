@@ -129,7 +129,7 @@ class RestaurantController extends Controller
         else $restaurant->types()->detach();
 
         $restaurant->update($data);
-        return redirect()->route('admin.restaurants.show', $restaurant);
+        return redirect()->route('admin.restaurants.index', $restaurant);
     }
 
     /** 
