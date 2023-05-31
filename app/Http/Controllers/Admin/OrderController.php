@@ -34,8 +34,6 @@ class OrderController extends Controller
                 });
         })->orderBy('created_at', 'desc')->paginate(8);
 
-        // dump($orders);
-        // $orders = Order::paginate(8);
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -68,15 +66,15 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        // $orderId = $order->id;
+
         $firstDish = $order->dishes()->first();
         $restaurant_id = $firstDish->restaurant_id;
         $id_user = Auth::user()->id;
-        // $restaurant = Restaurant::where('id', '=', $restaurant_id)->get();
+
         $restaurant = Restaurant::where('id', '=', $restaurant_id)->first();
         $user_id = $restaurant->user_id;
         $dishes= $order->dishes;
-        // dd($dishes);
+ 
         if ($id_user != $user_id) {
             return redirect()->action([OrderController::class, 'index']);
         } else {
@@ -116,7 +114,7 @@ class OrderController extends Controller
     public function trash(Request $request)
     {
         $orders = Order::onlyTrashed()->paginate(8);
-        $orders->appends($_GET);
+        // $orders->appends($_GET);
         return view('admin.orders.trash', compact('orders'));
     }
 

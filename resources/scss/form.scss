@@ -9,20 +9,17 @@
     padding: 0.8rem 1rem;
     border: none;
 
-
     &:hover {
         background: #e9511d;
         background: -webkit-linear-gradient(0deg, #e9511d 0%, #bc48ff 100%);
         background: linear-gradient(0deg, #e9511d 0%, #bc48ff 100%);
         cursor: pointer;
     }
-
 }
 
 .form-register-ctn {
     position: absolute;
     width: 100%;
-
 }
 
 .form-register {
@@ -50,8 +47,6 @@
     img {
         max-width: 90%;
         object-fit: cover;
-        // outline: 2px solid #5d4df5;
-        // outline-offset: 4px;
         border: 1px dashed yellow;
     }
 }
@@ -72,7 +67,6 @@ body {
 
 .row-a {
     background: #f1c40f;
-    ;
     height: 10vh;
     width: 100%;
     animation: fade 5s infinite;
@@ -115,15 +109,13 @@ body {
     animation-delay: 4.5s;
 }
 
-
 @keyframes fade {
     from {
         background: #f1c40f;
     }
 
     to {
-        // background: #d35400;
-        background: #E9511D;
+        background: #e9511d;
     }
 }
 

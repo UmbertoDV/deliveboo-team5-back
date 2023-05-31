@@ -28,20 +28,13 @@ class DishController extends Controller
         $sort = (!empty($sort_request = $request->get('sort'))) ? $sort_request : 'updated_at';
         $order = (!empty($order_request = $request->get('order'))) ? $order_request : 'ASC';
 
-        // if (isset($request->visibility)) {
-            //     $dishes->where('visibility', '=', $request->visibility);
-            // }
-            
         $dishes = Dish::where('id', '>', 0);
         $user_id = $request->user()->id;
         $restaurant = User::find($user_id)->restaurant;
-        // dd($restaurant);
+
         if ($restaurant) {
             $dishes = $restaurant->dishes;
         }
-        // dd($dishes);
-
-        // $dishes = $dishes->sortByDesc($sort)->paginate(6)->withQueryString();
 
         return view('admin.dishes.index', compact('dishes', 'sort', 'order', 'visibility'));
     }
@@ -79,8 +72,6 @@ class DishController extends Controller
 
         $dish = new Dish;
         $dish->fill($data);
-
-        // $data['visibility'] = $request->has('visibility') ? 1 : 0;
 
         // Collegamento con id_restaurant
         $user_id = $request->user()->id;

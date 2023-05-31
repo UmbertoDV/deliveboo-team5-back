@@ -120,11 +120,6 @@ class TypeController extends Controller
             'color.min' => 'Seleziona il colore dal color picker',
         ]
     );
-    // if(Arr::exists($data, 'image')){
-    //     if($type->image) Storage::delete($type->image);
-    //     $path_image = Storage::put('uploads/types', $data['image']);
-    //     $data['image'] = $path_image;
-    // };
 
     $data = ($request->all());
     if(Arr::exists($data, 'image')){
@@ -136,7 +131,6 @@ class TypeController extends Controller
     $type->fill($data);
     $type->save();
 
-    
     return to_route('admin.types.index')
         ->with('message_content', "Type $type->id modificata con successo");
 

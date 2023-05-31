@@ -26,9 +26,6 @@ class AdminHomeController extends Controller
         if ($restaurant) {
             $dishes = $restaurant->dishes;
         }
-        // $dish = Dish::where('restaurant_id' == 'restaurant_id');
-
-        // dd($dish);
 
         return view('admin.welcome', compact('dishes', 'restaurant'));
     }

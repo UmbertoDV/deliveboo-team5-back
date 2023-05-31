@@ -23,13 +23,11 @@ class RestaurantController extends Controller
     public function index(Restaurant $restaurant)
     {
         $types = Type::orderBy('name')->get();
-        // dd($types);
 
         $user_id = Auth::id();
         $user = Auth::user();
         $restaurants = Restaurant::where('user_id', $user_id)->get();
         $restaurant = User::find($user_id)->restaurant;
-        // dump($restaurant);
 
         return view('admin.restaurants.index', compact('restaurants', 'user_id', 'restaurant', 'types', 'user'));
     }
@@ -68,7 +66,6 @@ class RestaurantController extends Controller
         $restaurant->save();
 
         if (Arr::exists($data, 'types')) $restaurant->types()->attach($data['types']);
-        // dd($restaurant);
 
         return redirect()->route('admin.restaurants.show', $restaurant);
     }
@@ -102,7 +99,7 @@ class RestaurantController extends Controller
         }
 
         $types = Type::orderBy('name')->get();
-        //
+
         $restaurant_type = $restaurant->types->pluck('id')->toArray();
         return view('admin.restaurants.form', compact('restaurant', 'restaurant_type', 'types'));
     }

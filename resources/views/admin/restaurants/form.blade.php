@@ -102,7 +102,6 @@
 
                             {{-- TYPES --}}
                             <div>
-
                                 <div class="mt-4 form-check @error('types') is-invalid @enderror">
                                     @foreach ($types as $type)
                                         <label for="type-{{ $type->id }}" class="form-label">
@@ -118,7 +117,6 @@
                                         </div>
                                     @enderror
                                 </div>
-
                             </div>
 
                             {{-- IMMAGINE --}}

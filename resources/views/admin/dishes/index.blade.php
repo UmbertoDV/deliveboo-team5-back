@@ -135,8 +135,7 @@
 
             </tbody>
         </table>
-        {{-- PAGINATION --}}
-        {{-- {{ $dishes->links() }} --}}
+
     </div>
 
     {{-- MODALE --}}

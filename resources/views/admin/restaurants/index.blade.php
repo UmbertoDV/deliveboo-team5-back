@@ -4,16 +4,7 @@
 
 @section('content')
     <div class="container rest-show mt-3">
-        @if (!$restaurant)
-            <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
-                Aggiungi il tuo ristorante
-            </a>
-        @else
-            <h2>Il tuo ristorante</h2>
-        @endif
 
-
-        {{-- <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary my-3 mb-4"> Torna indietro</a> --}}
         @if ($restaurant)
             <div class="d-flex gap-2">
                 <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-primary my-3 mb-4"> <i
@@ -47,6 +38,5 @@
         @endif
     </div>
     {{-- MODALE --}}
-
 
 @endsection

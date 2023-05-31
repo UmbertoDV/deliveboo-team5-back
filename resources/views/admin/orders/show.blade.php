@@ -19,12 +19,12 @@
                 <h6 class="mb-2 my-3"><strong>Telefono:</strong> {{ $order->telephone }}</h6>
                 <h6 class="mb-2 my-3"><strong>Totale:</strong> €{{ $order->total }}</h6>
                 <h6 class="mb-2 my-3"><strong>Stato:</strong> {{ $order->status }}</h6>
-                <p><strong>Note: </strong>{{ $order->note }}</p>
-                <h4>Riepilogo Ordine:</h4>
+                <p><strong>Note: </strong> {{ $order->note }}</p>
+                <h4>Riepilogo Ordine: </h4>
                 @foreach ($dishes as $dish)
                 <div class="d-flex flex-column border">
-                    <div class="mb-2 my-3 d-flex ms-2"><strong>Piatto: </strong> <div>{{ $dish->name }}</div></div>
-                    <div class="mb-2 my-3 d-flex ms-2"><strong>Quantità: </strong> <div>{{ $dish->pivot->quantity }}</div></div>
+                    <div class="mb-2 my-3 d-flex ms-2"><strong>Piatto: </strong> <div> {{ $dish->name }}</div></div>
+                    <div class="mb-2 my-3 d-flex ms-2"><strong>Quantità: </strong> <div> {{ $dish->pivot->quantity }}</div></div>
                 @endforeach
                 </div>
 

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{-- TO DO --}}
+
 @section('content')
     <div class="form-dish-bg">
         <section class="container form-contain-dish pt-4">
@@ -55,27 +55,6 @@
                                     </div>
                                 @enderror
                             </div>
-
-                            {{-- SELECT TYPE --}}
-                            {{-- <div>
-                            <div class="">
-                                <label for="type class=" class="form-label">
-                                    Tipologia
-                                </label>
-                                <select name="type" id="type"
-                                    class="form-select @error('type') is-invalid @enderror">
-                                    @foreach ($types as $type)
-                                        <option @if (old('type', $dish->$type) == $type->id) selected @endif
-                                            value="{{ $type->id }}">{{ $type->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('type')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div> --}}
 
                             {{-- PRICE --}}
                             <div>
