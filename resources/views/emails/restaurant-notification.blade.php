@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="container" style="background-color:antiquewhite; text-align:center;">
     <h1>Nuovo ordine ricevuto!</h1>
     <h2>Da: {{ $order->name }} {{ $order->surname }}</h2>
     <h2>Contatti:</h2>
@@ -17,7 +17,7 @@
     <h3>Telefono: {{ $order->telephone }}</h3>
     <h3>Note: {{ $order->note }}</h3>
     <h2>Tot. ordine: €{{ $order->total }}</h2>
-    <button><a href="http://127.0.0.1:8000/admin/orders">Vai all'ordine</a></button>
+    <button style="border-radius:1rem; background-color:#5d4df5; padding:1rem;"><a style="color:white" href="http://127.0.0.1:8000/admin/orders">Vai all'ordine</a></button>
 </body>
 
 </html>

@@ -29,9 +29,10 @@ class OrderConfirmationMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(Order $order)
     {
-        return $this->view('emails.order-confirmation')
+        $dishes = $order->dish_id;
+        return $this->view('emails.order-confirmation', compact('order', 'dishes'))
             ->subject('Order Confirmation');
     }
 }
